@@ -1,0 +1,35 @@
+{
+  "name": "react-reacticons",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "keywords": [
+    "react",
+    "react icons",
+    "react svg icons",
+    "fontawesome",
+    "material design icons",
+    "icons",
+    "icons react"
+  ],
+  "author": "Warren Mira <warrenmira@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dist": "babel src --out-dir dist && cp package.json README.md dist",
+    "test-watch": "mocha --compilers js:babel-register --recursive --watch "
+  },  
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wmira/reacticons.git"
+  },
+  "peerDependencies": {    
+    "react": "^15.4.1"
+  },
+  "devDependencies": {        
+    "svgfont2js": "^0.1.2",
+    "babel-core": "^6.20.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-2": "^6.18.0"
+  }
+}
