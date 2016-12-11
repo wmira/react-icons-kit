@@ -1,23 +1,17 @@
 
 const fs = require('fs');
-const { findViewBox } = require('./utils');
-const exportsArr = [];
+const { findViewBox, exportableName, writeIconModule } = require('./utils');
+
+const TRANSLATE = {
+    try: 'tryIcon',
+    '500px': 'fiveHundredPX',
+    'switch': 'switchIcon'
+}
 
 const extractName = file => {
     const idxDash = file.indexOf('-') + 1;
     const idxSvg = file.indexOf('.svg');
     return file.substring(idxDash, idxSvg);
-};
-
-const exportableName = name => {
-    const splitNames = name.split('-');
-    if ( splitNames.length === 1 ) {
-        return name;
-    }
-    return splitNames.slice(1).reduce( (camel, current) => {
-        const uppercased = current.charAt(0).toUpperCase();
-        return `${camel}${uppercased}${current.substring(1)}`;
-    }, splitNames[0]);
 };
 
 const readFile = file => {
@@ -33,31 +27,21 @@ const readFile = file => {
     while ( (matches = expr.exec(contents)) !== null ) {
         results.push(`${matches[1]}`);
     }
-    return { name, paths: results, viewBox: findViewBox(contents) };
+    return { name: TRANSLATE[name] ? TRANSLATE[name]: name, paths: results, viewBox: findViewBox(contents) };
 
 };
 
 
 
-const readFiles = () => {
+const generateFile = () => {
+    const exportsArr = [];
     fs.readdir('./SVG', (err, files) => {
         files.forEach( file => {
             exportsArr.push(readFile(file));
         });
-
-        let moduleFile = `module.exports = {\n`;
-
-
-        const exportitems = exportsArr.reduce( (out, exp) => {
-            return `${out}\n'${exp.name}': {paths: ${JSON.stringify(exp.paths)}, viewBox: ${JSON.stringify(exp.viewBox)} },`;
-        }, '');
-
-
-
-        fs.writeFile('icomoon.js', `${moduleFile}${exportitems.substring(0, exportitems.length -1)}}`, () => {
-            console.log('done');
-        });
+        
+        writeIconModule(exportsArr, '../src/icomoon.js');
     });
 };
 
-readFiles();
+generateFile();

@@ -2,7 +2,13 @@
 const fs = require('fs');
 const svgfont2js = require('svgfont2js');
 const glyphs = svgfont2js(fs.readFileSync('./fontawesome-webfont.svg', 'utf8'));
+const { exportableName, writeIconModule } = require('./utils');
 
+const TRANSLATE = {
+    try: 'tryIcon',
+    '500px': 'fiveHundredPX',
+    'switch': 'switchIcon'
+}
 //from https://github.com/riobard/font-awesome-svg/blob/master/extract.js#L11
 const loadAliases = (less) => {
     const re = /@fa-var-([a-z0-9-]+)\s*:\s*"\\([0-9a-f]+)";/g;
@@ -23,24 +29,19 @@ const loadAliases = (less) => {
 };
 
 
-let moduleFile = `module.exports = {\n`;
+const generateFile = () => {
+    const glypsArr = [];
+    const aliases = loadAliases(fs.readFileSync('variables.less', 'utf8'));
 
-const glypsArr = [];
-const aliases = loadAliases(fs.readFileSync('variables.less', 'utf8'));
-
-glyphs.forEach( g => {
-    const aliassesArr = aliases[g.unicode_hex];
-    aliassesArr.forEach( name => {
-        console.log('name ', name);
-        glypsArr.push({viewBox: `0 0 ${g.width} ${g.height}`, name, path: g.path });
+    glyphs.forEach( g => {
+        const aliassesArr = aliases[g.unicode_hex];
+        aliassesArr.map(exportableName).forEach( name => {        
+            glypsArr.push({viewBox: `0 0 ${g.width} ${g.height}`, name: TRANSLATE[name] ? TRANSLATE[name]: name, paths: [g.path] });
+        });
     });
-});
 
+    writeIconModule(glypsArr, '../src/fontawesome.js');
 
-const exportitems = glypsArr.reduce( (out, exp) => {
-    return `${out}\n'${exp.name}': {paths: [${JSON.stringify(exp.path)}], viewBox: ${JSON.stringify(exp.viewBox)} },`;
-}, '');
+};
 
-fs.writeFile('fontawesome.js', `${moduleFile}${exportitems.substring(0, exportitems.length -1)}}`, () => {
-    console.log('done');
-});
+generateFile();

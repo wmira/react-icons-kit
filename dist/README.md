@@ -4,7 +4,13 @@ react-reacticons
 
 # Installation
 
-import Icon from 'react-reacticons';
+```
+npm install --save-dev react-reacticons
+```
+
+# Documentation / Demo
+
+Please visit [react-reacticons](http://wmira.github.io/reacticons/)
 
 # Usage
 

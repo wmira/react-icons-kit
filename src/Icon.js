@@ -1,30 +1,32 @@
 
 import React, { PropTypes } from 'react';
 
+import SvgIcon from './SvgIcon';
 
 export const Icon = (props) => {
 
-    const { size } = props;
-    const { paths, viewBox } = props.icon;
-
     return (
-        <svg style={{ display: 'inline-block', verticalAlign: 'middle'}} height={size} width={size} viewBox={viewBox}>
-            { paths.map( (path,idx) => {
-                return <path key={idx} d={ path } style={{ fill: props.fill }} />;
-            })}
-        </svg>
+        <div style={{...props.style, display: 'inline-block'}} className={props.className}> 
+            <SvgIcon size={props.size} icon={props.icon}/>
+        </div>
     );
 };
 
+export const withBaseIcon = (defaultProps) => props => { 
+    const propsToUse = {...defaultProps};
+
+    return <Icon {...propsToUse} icon={props.icon}/>
+};
+
+
 Icon.defaultProps = {
-    size: '16',
+    size: 16,
     fill: 'currentColor'
 };
 
 Icon.propTypes = {
     icon: PropTypes.object.isRequired,
-    size: PropTypes.number,
-    fill: PropTypes.string
+    size: PropTypes.number    
 };
 
 export default Icon;

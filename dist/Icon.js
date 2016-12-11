@@ -1,41 +1,34 @@
-'use strict';
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Icon = undefined;
+import React, { PropTypes } from 'react';
 
-var _react = require('react');
+import SvgIcon from './SvgIcon';
 
-var _react2 = _interopRequireDefault(_react);
+export var Icon = function Icon(props) {
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Icon = exports.Icon = function Icon(props) {
-    var size = props.size;
-    var _props$icon = props.icon,
-        paths = _props$icon.paths,
-        viewBox = _props$icon.viewBox;
-
-
-    return _react2.default.createElement(
-        'svg',
-        { style: { display: 'inline-block', verticalAlign: 'middle' }, height: size, width: size, viewBox: viewBox },
-        paths.map(function (path, idx) {
-            return _react2.default.createElement('path', { key: idx, d: path, style: { fill: props.fill } });
-        })
+    return React.createElement(
+        'div',
+        { style: _extends({}, props.style, { display: 'inline-block' }), className: props.className },
+        React.createElement(SvgIcon, { size: props.size, icon: props.icon })
     );
 };
 
+export var withBaseIcon = function withBaseIcon(defaultProps) {
+    return function (props) {
+        var propsToUse = _extends({}, defaultProps);
+
+        return React.createElement(Icon, _extends({}, propsToUse, { icon: props.icon }));
+    };
+};
+
 Icon.defaultProps = {
-    size: '16',
+    size: 16,
     fill: 'currentColor'
 };
 
 Icon.propTypes = {
-    icon: _react.PropTypes.object.isRequired,
-    size: _react.PropTypes.number,
-    fill: _react.PropTypes.string
+    icon: PropTypes.object.isRequired,
+    size: PropTypes.number
 };
 
-exports.default = Icon;
+export default Icon;
