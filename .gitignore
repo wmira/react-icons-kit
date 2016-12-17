@@ -1,2 +1,5 @@
 node_modules
 dist/site
+scripts/icomoon
+scripts/*.zip
+npm*debug*.log

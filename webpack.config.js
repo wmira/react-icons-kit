@@ -3,19 +3,13 @@ const path = require('path');
 const webpack = require('webpack');
 
 const plugins = []; 
-// const plugins = [new webpack.optimize.UglifyJsPlugin({
-//      compress: {
-//         warnings: false,
-//         dead_code: true,
-//         unused: true
-//      }
-// })];
+
 
 module.exports = {
 
     resolve: {
         alias: {
-            'react-reacticons': path.join(__dirname, 'src')            
+            'react-icons-kit': path.join(__dirname, 'src')            
         }
     },
     node: {

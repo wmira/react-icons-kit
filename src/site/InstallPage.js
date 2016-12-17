@@ -1,8 +1,8 @@
 
 import React from 'react';
 
-import Icon, { withBaseIcon } from 'react-reacticons';
-import { home, home2, home3 } from 'react-reacticons/icomoon';
+import Icon, { withBaseIcon } from 'react-icons-kit';
+import { home, home2, home3 } from 'react-icons-kit/icomoon';
 
 const IconRed64 = withBaseIcon({ size: 64, style: {color: '#E53935'}});
 const IconPink32 = withBaseIcon({ size: 32, style: {color: '#EC407A'}});
@@ -17,7 +17,7 @@ export const InstallPage = () => (
         <h3>Install</h3>
         <div style={{ width: '60%', margin: 'auto'}}>
             <pre className='prettyprint'>{`
-                        npm install --save-dev react-reacticons
+                        npm install --save-dev react-icons-kit
             `}
             </pre>        
         </div>
@@ -25,11 +25,11 @@ export const InstallPage = () => (
         <Section>
             <div style={{ width: '40%' }}>
                 <pre className='prettyprint lang-javascript'>{`
-    import Icon from 'react-reacticons';
+    import Icon from 'react-icons-kit';
 
     //import icons
 
-    import { home } from 'react-reacticons/icomoon';
+    import { home } from 'react-icons-kit/icomoon';
                 
     <Icon icon={home}/>
     <Icon size={32} icon={home}/>
@@ -93,10 +93,10 @@ export const InstallPage = () => (
             <div style={{ width: '40%' }}>
                 <pre className='prettyprint lang-javascript'>{`
 
-    import { withBaseIcon } from 'react-reacticons';
-    import { home } from 'react-reacticons/icomoon';
-    import { home2 } from 'react-reacticons/icomoon';
-    import { home3 } from 'react-reacticons/icomoon';
+    import { withBaseIcon } from 'react-icons-kit';
+    import { home } from 'react-icons-kit/icomoon';
+    import { home2 } from 'react-icons-kit/icomoon';
+    import { home3 } from 'react-icons-kit/icomoon';
     
     //you can compose icon to prevent repetitive 
     //args like size and color

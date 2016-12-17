@@ -1,11 +1,11 @@
 
 import React from 'react';
 
-import Icon from 'react-reacticons';
+import Icon from 'react-icons-kit';
 
-import * as icomoon from 'react-reacticons/icomoon';
-import * as fontawesome from 'react-reacticons/fontawesome';
-import * as materialDesign from 'react-reacticons/material-design';
+import * as icomoon from 'react-icons-kit/icomoon';
+import * as fontawesome from 'react-icons-kit/fa';
+import * as materialDesign from 'react-icons-kit/md';
 
 
 const Sep = () => <span style={{paddingRight: 4}}/>

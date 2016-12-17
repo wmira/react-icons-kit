@@ -1,6 +1,12 @@
+'use strict';
 
-import { Icon, withBaseIcon } from './Icon';
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Icon = exports.withBaseIcon = undefined;
 
-export { withBaseIcon };
-export { Icon };
-export default Icon;
+var _Icon = require('./Icon');
+
+exports.withBaseIcon = _Icon.withBaseIcon;
+exports.Icon = _Icon.Icon;
+exports.default = _Icon.Icon;

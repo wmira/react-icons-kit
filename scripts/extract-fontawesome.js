@@ -1,14 +1,23 @@
 
+const path = require('path')
 const fs = require('fs');
-const svgfont2js = require('svgfont2js');
-const glyphs = svgfont2js(fs.readFileSync('./fontawesome-webfont.svg', 'utf8'));
-const { exportableName, writeIconModule } = require('./utils');
+const svgfont2js = require('svgfont2js'); //you need this patch on line 42 if (!g.$.d || !g.$.unicode) {
+
+const svgFont = path.join('..', 'node_modules', 'font-awesome','fonts', 'fontawesome-webfont.svg' );
+const lessVariables = path.join('..', 'node_modules', 'font-awesome','less', 'variables.less' );
+
+const glyphs = svgfont2js(fs.readFileSync(svgFont, 'utf8'));
+const { exportableName, writeIconModule, createExportLine } = require('./utils');
 
 const TRANSLATE = {
-    try: 'tryIcon',
+    'try': 'tryFa',
     '500px': 'fiveHundredPX',
-    'switch': 'switchIcon'
+    'switch': 'switchFa'
 }
+
+
+const outFolder = path.join('..', 'src', 'fa');
+
 //from https://github.com/riobard/font-awesome-svg/blob/master/extract.js#L11
 const loadAliases = (less) => {
     const re = /@fa-var-([a-z0-9-]+)\s*:\s*"\\([0-9a-f]+)";/g;
@@ -29,19 +38,50 @@ const loadAliases = (less) => {
 };
 
 
-const generateFile = () => {
-    const glypsArr = [];
-    const aliases = loadAliases(fs.readFileSync('variables.less', 'utf8'));
+const generateFiles = () => {
+    //const glypsArr = [];
+    
+    const aliases = loadAliases(fs.readFileSync(lessVariables, 'utf8'));
 
-    glyphs.forEach( g => {
-        const aliassesArr = aliases[g.unicode_hex];
-        aliassesArr.map(exportableName).forEach( name => {        
-            glypsArr.push({viewBox: `0 0 ${g.width} ${g.height}`, name: TRANSLATE[name] ? TRANSLATE[name]: name, paths: [g.path] });
+    const exportLines = glyphs.reduce( (result, glyph) => {
+        const aliassesArr = aliases[glyph.unicode_hex];
+
+        const tmpExportLines = aliassesArr.map(exportableName).map( name => {        
+            const viewBox = `0 0 ${glyph.width} ${glyph.height}`;
+            const children = [ { name: 'path', attribs: { d: glyph.path } } ];
+            const safeExportName = TRANSLATE[name] ? TRANSLATE[name] : name;
+
+            const exportLine = createExportLine(safeExportName, viewBox, children);
+            
+            fs.writeFileSync(path.join(outFolder, `${safeExportName}.js`), exportLine);
+            
+            return exportLine;            
         });
-    });
+        
+        return result.concat(tmpExportLines);
 
-    writeIconModule(glypsArr, '../src/fontawesome.js');
+        
+    }, []);
+
+    writeIconModule(exportLines, path.join(outFolder, 'index.js'));
 
 };
 
-generateFile();
+generateFiles();
+
+// const generateFile = () => {
+//     const glypsArr = [];
+//     const aliases = loadAliases(fs.readFileSync('variables.less', 'utf8'));
+
+//     glyphs.forEach( g => {
+//         const aliassesArr = aliases[g.unicode_hex];
+//         aliassesArr.map(exportableName).forEach( name => {        
+//             glypsArr.push({viewBox: `0 0 ${g.width} ${g.height}`, name: TRANSLATE[name] ? TRANSLATE[name]: name, paths: [g.path] });
+//         });
+//     });
+
+//     writeIconModule(glypsArr, '../src/fontawesome.js');
+
+// };
+
+// generateFile();

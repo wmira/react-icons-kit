@@ -1,23 +1,32 @@
-react-reacticons
+react-icons-kit
 =================
 
 
 # Installation
 
 ```
-npm install --save-dev react-reacticons
+npm install --save-dev react-icon-kit
 ```
 
 # Documentation / Demo
 
-Please visit [react-reacticons](http://wmira.github.io/reacticons/)
+Please visit [react-icons-kit](http://wmira.github.io/react-icon-kit/)
 
-# Usage
+# Icon Sets Available
+
+1. FontAwesome 4.7
+2. Material Design 3.0.1
+3. IcoMoon Latest Release
+
+Plus more to come.
+
+# Quick Start Guide
 
 ```javascript
-    import { Icon } from 'react-reacticons/Icon';
-    import { ic_add_a_photo } from 'react-reacticons/material-design';
-    import { lock } from 'react-reacticons/fontawesome';
+    
+    import Icon from 'react-icons-kit';
+    import { ic_add_a_photo } from 'react-icons-kit/md/ic_add_a_photo';
+    import { lock } from 'react-icons-kit/fa/lock';
 
     export const ShowIcons = () => {
 

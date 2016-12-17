@@ -1,16 +1,22 @@
 
-import React, { PropTypes } from 'react';
+import React, { createElement, PropTypes } from 'react';
 
 
 export const SvgIcon = (props) => {
 
     const { size } = props;
-    const { paths, viewBox } = props.icon;
-
+    const { children, viewBox } = props.icon;
+    console.log('icon ', props.icon );
     return (
         <svg style={{ display: 'inline-block', verticalAlign: 'middle'}} height={size} width={size} viewBox={viewBox}>
-            { paths.map( (path,idx) => {
-                return <path key={idx} d={ path } style={{ fill: props.fill }} />;
+            { children.map( (child,idx) => {
+                const { name, attribs: attribsMap } = child;
+                const style = { fill: props.fill };                
+                if ( name === 'path' ) {
+                    return createElement(name, { d: attribsMap.d, style });
+                } else {
+                    return createElement(name, { ...attribsMap, style });
+                }
             })}
         </svg>
     );

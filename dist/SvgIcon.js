@@ -1,18 +1,38 @@
+'use strict';
 
-import React, { PropTypes } from 'react';
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.SvgIcon = undefined;
 
-export var SvgIcon = function SvgIcon(props) {
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SvgIcon = exports.SvgIcon = function SvgIcon(props) {
     var size = props.size;
     var _props$icon = props.icon,
-        paths = _props$icon.paths,
+        children = _props$icon.children,
         viewBox = _props$icon.viewBox;
 
-
-    return React.createElement(
+    console.log('icon ', props.icon);
+    return _react2.default.createElement(
         'svg',
         { style: { display: 'inline-block', verticalAlign: 'middle' }, height: size, width: size, viewBox: viewBox },
-        paths.map(function (path, idx) {
-            return React.createElement('path', { key: idx, d: path, style: { fill: props.fill } });
+        children.map(function (child, idx) {
+            var name = child.name,
+                attribsMap = child.attribs;
+
+            var style = { fill: props.fill };
+            if (name === 'path') {
+                return (0, _react.createElement)(name, { d: attribsMap.d, style: style });
+            } else {
+                return (0, _react.createElement)(name, _extends({}, attribsMap, { style: style }));
+            }
         })
     );
 };
@@ -23,9 +43,9 @@ SvgIcon.defaultProps = {
 };
 
 SvgIcon.propTypes = {
-    icon: PropTypes.object.isRequired,
-    size: PropTypes.number,
-    fill: PropTypes.string
+    icon: _react.PropTypes.object.isRequired,
+    size: _react.PropTypes.number,
+    fill: _react.PropTypes.string
 };
 
-export default SvgIcon;
+exports.default = SvgIcon;

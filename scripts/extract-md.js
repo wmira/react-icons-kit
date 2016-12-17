@@ -1,56 +1,61 @@
 
 const fs = require('fs');
-const { writeIconModule, findViewBox, extractPaths } = require('./utils');
+const path = require('path');
+const { writeIconModule, findViewBox, extractPaths, createExportLine,
+    readFromSvgContent } = require('./utils');
+const baseFolder = 'material-design-icons-3.0.1';
 
-const svgdirs = [
-    './image/svg',
-    './file/svg',
-    './notification/svg',
-    './av/svg',
-    './device/svg',
-    './alert/svg',
-    './maps/svg',
-    './content/svg',
-    './hardware/svg',
-    './communication/svg',
-    './navigation/svg',
-    './action/svg',
-    './editor/svg',
-    './toggle/svg',
-    './social/svg',
-    './places/svg'
-];
+const outFolder = path.join('..', 'src', 'md');
+/** 
+ * Download latest from:
+ * https://github.com/google/material-design-icons/releases
+ * 
+ * 
+ * 
+ */
+const filterName = f => f.indexOf('svg/production') >= 0;
+const filterSize = f => f.indexOf('_24px') >= 0;
+const findAllSvgFiles = (dir, filelist = []) => {
+    
+    fs.readdirSync(dir).forEach(file => {
+
+        filelist = fs.statSync(path.join(dir, file)).isDirectory()
+        ? findAllSvgFiles(path.join(dir, file), filelist)
+        : filelist.filter(filterName).concat(path.join(dir, file));
+
+    });
+    
+    return filelist;
+}
+
+
 
 const extractName = fname => {
     const index = fname.indexOf('_24px.svg');
     return fname.substring(0, index);
 };
 
-const generateFile = () => {
-    const svgs = [];
+const generateFiles = () => {
+    const svgs = findAllSvgFiles(baseFolder).filter(filterSize);
     
-     const processed = {};
-    svgdirs.forEach( svgdir => {
+    const processed = {};
+    
+    const exportLines = svgs.map( svgFile => {
+        const filename = path.basename(svgFile);
+        const name = extractName(filename);
+        
+        if ( !processed[name] ) { //there seems to be some duplicate names
+            const content = fs.readFileSync(svgFile, { encoding: 'UTF-8' });
+            const { viewBox, children } = readFromSvgContent(content);
+            const exportLine = createExportLine(name, viewBox, children);            
+            fs.writeFileSync(path.join(outFolder, `${name}.js`), exportLine);
+            processed[name] = name;
+            return exportLine;
+        }       
+    }).filter( f => f );
 
-        const files = fs.readdirSync(`./material-design-icons/${svgdir}/production`, { encoding: 'utf-8' });
-       
-        const filtered = files.filter( f => f.indexOf('_24px.svg') >= 0 );
-        filtered.forEach( f => {
-            
-            const name = extractName(f);
-
-            if ( !processed[name] ) {
-                const content = fs.readFileSync(`./material-design-icons/${svgdir}/production/${f}`, { encoding: 'UTF-8' });
-                const viewBox = findViewBox(content);
-                const paths = extractPaths(content);                            
-                svgs.push({ name, paths, viewBox });
-                processed[name] = name;
-            } 
-        });
-    });
-
-    writeIconModule( svgs, '../src/material-design.js');
+    writeIconModule(exportLines, path.join(outFolder, 'index.js'));
 
 };
 
-generateFile();
+generateFiles();

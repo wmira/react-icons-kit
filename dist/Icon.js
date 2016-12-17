@@ -1,23 +1,36 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.withBaseIcon = exports.Icon = undefined;
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-import React, { PropTypes } from 'react';
+var _react = require('react');
 
-import SvgIcon from './SvgIcon';
+var _react2 = _interopRequireDefault(_react);
 
-export var Icon = function Icon(props) {
+var _SvgIcon = require('./SvgIcon');
 
-    return React.createElement(
+var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Icon = exports.Icon = function Icon(props) {
+
+    return _react2.default.createElement(
         'div',
         { style: _extends({}, props.style, { display: 'inline-block' }), className: props.className },
-        React.createElement(SvgIcon, { size: props.size, icon: props.icon })
+        _react2.default.createElement(_SvgIcon2.default, { size: props.size, icon: props.icon })
     );
 };
 
-export var withBaseIcon = function withBaseIcon(defaultProps) {
+var withBaseIcon = exports.withBaseIcon = function withBaseIcon(defaultProps) {
     return function (props) {
         var propsToUse = _extends({}, defaultProps);
 
-        return React.createElement(Icon, _extends({}, propsToUse, { icon: props.icon }));
+        return _react2.default.createElement(Icon, _extends({}, propsToUse, { icon: props.icon }));
     };
 };
 
@@ -27,8 +40,8 @@ Icon.defaultProps = {
 };
 
 Icon.propTypes = {
-    icon: PropTypes.object.isRequired,
-    size: PropTypes.number
+    icon: _react.PropTypes.object.isRequired,
+    size: _react.PropTypes.number
 };
 
-export default Icon;
+exports.default = Icon;
