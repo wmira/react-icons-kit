@@ -68,7 +68,7 @@ export class Icons extends React.Component {
                     <div>
                         <pre className='prettyprint lang-javascript'>{`
     import Icon from 'react-icons-kit';
-    import { ${this.state.icon} } from 'react-icons-kit/${this.state.set}';
+    import { ${this.state.icon} } from 'react-icons-kit/${this.state.set}/${this.state.icon}';
 
     <Icon icon={${this.state.icon}} />;                            
                         `}</pre>
