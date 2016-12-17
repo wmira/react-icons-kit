@@ -6,13 +6,15 @@ import Icon from 'react-icons-kit';
 import * as icomoon from 'react-icons-kit/icomoon';
 import * as fontawesome from 'react-icons-kit/fa';
 import * as materialDesign from 'react-icons-kit/md';
+import * as iconic from 'react-icons-kit/iconic';
+import * as entypo from 'react-icons-kit/entypo';
 
 
-const Sep = () => <span style={{paddingRight: 4}}/>
+const Sep = () => <span style={{paddingRight: 4}}/>;
 const InlineBlk = (props) => (<div style={{paddingRight: 6, display: 'inline-block'}}>{props.children}</div>);
 
 const IconContainer = (props) => (
-    <div className={'icon-container ' + (props.selected === props.iconName ? 'icon-container-selected' : '' )}  
+    <div className={'icon-container ' + (props.selected === props.iconName ? 'icon-container-selected' : '' )}
         data-icon={props.iconName} onClick={props.onIconClicked}>
         <div><Icon size={32} icon={props.iconData} /></div>
         <div style={{paddingTop: 4, fontSize: 10}}>{props.iconName}</div>
@@ -20,9 +22,11 @@ const IconContainer = (props) => (
 );
 
 const ICONSET = {
-    icomoon: icomoon,
-    materialDesign: materialDesign,
-    fontawesome: fontawesome
+    icomoon,
+    materialDesign,
+    fontawesome,
+    iconic,
+    entypo
 };
 
 export class Icons extends React.Component {
@@ -33,7 +37,7 @@ export class Icons extends React.Component {
     }
     onIconClicked = (e) => {
         const { target } = e;
-        
+
         let icon = null;
         let currentTarget = target;
         while ( !icon ) {
@@ -41,7 +45,7 @@ export class Icons extends React.Component {
             if ( !icon ) {
                 currentTarget = currentTarget.parentElement;
             }
-        }       
+        }
         if ( ICONSET[this.state.set][icon] ) {
             this.setState({ icon });
         }
@@ -54,7 +58,7 @@ export class Icons extends React.Component {
     }
 
     render() {
-    
+
         const iconSet = ICONSET[this.state.set];
 
         return (
@@ -68,24 +72,26 @@ export class Icons extends React.Component {
 
     <Icon icon={${this.state.icon}} />;                            
                         `}</pre>
-                    </div>                    
+                    </div>
                     <div >
                         Select Icon Set: <select value={this.state.set} onChange={this.onSetChanged}>
                             <option value={'icomoon'}>IcoMoon</option>
                             <option value={'fontawesome'}>FontAwesome</option>
                             <option value={'materialDesign'}>Material Design</option>
+                            <option value={'iconic'}>Open Iconic</option>
+                            <option value={'entypo'}>Entypo</option>
                         </select>
                     </div>
                 </div>
                 <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                    { Object.keys(iconSet).map( icon => {                
+                    { Object.keys(iconSet).map( icon => {
                         return (
                             <IconContainer onIconClicked={this.onIconClicked} selected={this.state.icon} key={icon} iconData={iconSet[icon]} iconName={icon} />
                         );
                     })}
                 </div>
             </div>
-        )
+        );
     }
 }
 

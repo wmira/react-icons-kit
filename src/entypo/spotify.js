@@ -1,0 +1,1 @@
+export const spotify = {"viewBox":"0 0 20 20","children":[{"name":"g","attribs":{}}]};

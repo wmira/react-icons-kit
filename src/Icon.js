@@ -6,16 +6,16 @@ import SvgIcon from './SvgIcon';
 export const Icon = (props) => {
 
     return (
-        <div style={{...props.style, display: 'inline-block'}} className={props.className}> 
+        <div style={{...props.style, display: 'inline-block'}} className={props.className}>
             <SvgIcon size={props.size} icon={props.icon}/>
         </div>
     );
 };
 
-export const withBaseIcon = (defaultProps) => props => { 
+export const withBaseIcon = (defaultProps) => props => {
     const propsToUse = {...defaultProps};
 
-    return <Icon {...propsToUse} icon={props.icon}/>
+    return <Icon {...propsToUse} icon={props.icon}/>;
 };
 
 
@@ -26,7 +26,7 @@ Icon.defaultProps = {
 
 Icon.propTypes = {
     icon: PropTypes.object.isRequired,
-    size: PropTypes.number    
+    size: PropTypes.number
 };
 
 export default Icon;

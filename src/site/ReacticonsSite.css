@@ -124,15 +124,14 @@ h3 {
 }
 
 .icon-container {
-    width: 84px;
-    padding-bottom: 10px;
-    padding-top: 10px;
+    width: 140px;
+    padding: 10px 4px;
     justify-content: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 2px;
+    align-items: center;    
     cursor: pointer;
+    border: 1px solid transparent;
 }
 
 .icon-container-selected {

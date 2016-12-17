@@ -1,5 +1,5 @@
 
-const path = require('path')
+const path = require('path');
 const fs = require('fs');
 const svgfont2js = require('svgfont2js'); //you need this patch on line 42 if (!g.$.d || !g.$.unicode) {
 
@@ -10,10 +10,10 @@ const glyphs = svgfont2js(fs.readFileSync(svgFont, 'utf8'));
 const { exportableName, writeIconModule, createExportLine } = require('./utils');
 
 const TRANSLATE = {
-    'try': 'tryFa',
+    'try': 'tryIcon',
     '500px': 'fiveHundredPX',
-    'switch': 'switchFa'
-}
+    'switch': 'switchIcon'
+};
 
 
 const outFolder = path.join('..', 'src', 'fa');
@@ -39,28 +39,27 @@ const loadAliases = (less) => {
 
 
 const generateFiles = () => {
-    //const glypsArr = [];
-    
+
     const aliases = loadAliases(fs.readFileSync(lessVariables, 'utf8'));
 
     const exportLines = glyphs.reduce( (result, glyph) => {
         const aliassesArr = aliases[glyph.unicode_hex];
 
-        const tmpExportLines = aliassesArr.map(exportableName).map( name => {        
+        const tmpExportLines = aliassesArr.map(exportableName).map( name => {
             const viewBox = `0 0 ${glyph.width} ${glyph.height}`;
             const children = [ { name: 'path', attribs: { d: glyph.path } } ];
             const safeExportName = TRANSLATE[name] ? TRANSLATE[name] : name;
 
             const exportLine = createExportLine(safeExportName, viewBox, children);
-            
+
             fs.writeFileSync(path.join(outFolder, `${safeExportName}.js`), exportLine);
-            
-            return exportLine;            
+
+            return exportLine;
         });
-        
+
         return result.concat(tmpExportLines);
 
-        
+
     }, []);
 
     writeIconModule(exportLines, path.join(outFolder, 'index.js'));
@@ -68,20 +67,3 @@ const generateFiles = () => {
 };
 
 generateFiles();
-
-// const generateFile = () => {
-//     const glypsArr = [];
-//     const aliases = loadAliases(fs.readFileSync('variables.less', 'utf8'));
-
-//     glyphs.forEach( g => {
-//         const aliassesArr = aliases[g.unicode_hex];
-//         aliassesArr.map(exportableName).forEach( name => {        
-//             glypsArr.push({viewBox: `0 0 ${g.width} ${g.height}`, name: TRANSLATE[name] ? TRANSLATE[name]: name, paths: [g.path] });
-//         });
-//     });
-
-//     writeIconModule(glypsArr, '../src/fontawesome.js');
-
-// };
-
-// generateFile();

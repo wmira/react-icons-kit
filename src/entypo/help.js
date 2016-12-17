@@ -1,0 +1,1 @@
+export const help = {"viewBox":"0 0 20 20","children":[{"name":"g","attribs":{}}]};

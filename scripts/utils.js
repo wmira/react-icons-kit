@@ -1,6 +1,25 @@
 
 const fs = require('fs');
 const cheerio = require('cheerio');
+const path = require('path');
+
+const TRANSLATE_MAP = {
+    '100%': 'oneHundredPercent',
+    'export': 'exportIcon',
+    'new': 'newIcon',
+    'switch': 'switchIcon',
+    '500px': 'fiveHundredPX',
+    'google+': 'googlePlus',
+    'package': 'packageIcon',
+    'try': 'tryIcon',
+    '500px': 'fiveHundredPX',
+    'switch': 'switchIcon',
+    'try': 'tryIcon',
+    '500px': 'fiveHundredPX',
+    'switch': 'switchIcon',
+    'delete': 'deleteIconic',
+    'in': 'inIconic'
+};
 
 const findViewBox = contents => {
     const viewBoxExpr = /viewBox="(.*?)"/g;
@@ -42,47 +61,92 @@ const generatePathsArr= (paths) => {
             "${x}"
         `;
     }).reduce( (res, path) => {
-        return res + "," + path
+        return res + ',' + path;
     });
-}
+};
 
-const generateExportCode = exp => {    
+const generateExportCode = exp => {
     return `export const ${exp.name} = { viewBox: "${exp.viewBox}", paths: [${generatePathsArr(exp.paths)}] }`;
-}
+};
 
-const createExportLine = (exportName, viewBox, children ) => {            
+const createExportLine = (exportName, viewBox, children ) => {
     const exportedObject = JSON.stringify({ viewBox, children });
-    return `export const ${exportName} = ${exportedObject};`;        
-}
+    return `export const ${exportName} = ${exportedObject};`;
+};
 
 const writeIconModule = (exps, filename) => {
-    const exportitems = exps.reduce( (out, exp) => {        
+    const exportitems = exps.reduce( (out, exp) => {
         return `${out}\n${exp}\n`;
     }, '');
 
     fs.writeFile(filename, exportitems, () => {
         console.log('done');
     });
-}
+};
 
-const readFromSvgContent = (content) => {
-    
+const readFromSvgContent = (content, fname) => {
+
     const $ = cheerio.load(content, { xmlMode: true, normalizeWhiteSpace: true });
     const children = [];
+
     const $svg = $('svg');
 
     $svg.children().each( (index, $el) => {
         const name = $el.name;
         //const attributes =
-        
+
         const attribs = Object.keys($el.attribs).reduce( (obj, key) => {
             obj[key] = $el.attribs[key];
             return obj;
-        }, {});            
+        }, {});
         children.push({ name, attribs });
     });
 
     return { children, viewBox: $svg[0].attribs['viewBox'] };
-}
+};
 
-module.exports = { readFromSvgContent, createExportLine, findViewBox, extractPaths, exportableName, generateExportCode, writeIconModule };
+
+const generateFromSvgFiles = (svgFolder, outFolder, options = {} ) => {
+
+    const { writeExportLines = true, exportedNames = {} } = options;
+
+    const extractName = file => {
+        const idxDash = file.indexOf('-') + 1;
+        const idxSvg = file.indexOf('.svg');
+        return file.substring(idxDash, idxSvg);
+    };
+
+    const files = fs.readdirSync(svgFolder, 'UTF-8').filter( f => f.indexOf('.svg') >= 0 );
+    const parsedFiles = files.map( f => {
+        const content = fs.readFileSync(path.join(svgFolder,f), { encoding: 'UTF-8' });
+
+        const { viewBox, children } = readFromSvgContent(content, f);
+        return { name: exportableName(extractName(f)), children, viewBox };
+    });
+    //write it
+    const exportLines = parsedFiles.map( parsed => {
+
+        const { name } = parsed;
+
+        if ( !exportedNames[name] ) {
+            const safeExportName = TRANSLATE_MAP[name] ? TRANSLATE_MAP[name] : name;
+
+            const { viewBox, children } = parsed;
+
+            const exportLine = createExportLine(safeExportName, viewBox, children); //`export const ${safeExportName} = ${exportedObject};`;
+
+            fs.writeFileSync(path.join(outFolder, `${safeExportName}.js`), exportLine);
+
+            exportedNames[name] = name;
+            return exportLine;
+        }
+
+
+    }).filter( f => f );
+    if ( writeExportLines ) {
+        writeIconModule(exportLines, path.join(outFolder, 'index.js'));
+    }
+    return exportLines;
+};
+
+module.exports = { readFromSvgContent, createExportLine, findViewBox, extractPaths, exportableName, generateExportCode, writeIconModule, generateFromSvgFiles };

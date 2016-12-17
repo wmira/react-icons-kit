@@ -19,17 +19,23 @@ var SvgIcon = exports.SvgIcon = function SvgIcon(props) {
         children = _props$icon.children,
         viewBox = _props$icon.viewBox;
 
-    console.log('icon ', props.icon);
     return _react2.default.createElement(
         'svg',
         { style: { display: 'inline-block', verticalAlign: 'middle' }, height: size, width: size, viewBox: viewBox },
-        children.map(function (child, idx) {
+        children.map(function (child) {
             var name = child.name,
                 attribsMap = child.attribs;
 
             var style = { fill: props.fill };
             if (name === 'path') {
-                return (0, _react.createElement)(name, { d: attribsMap.d, style: style });
+                var attribsToUse = Object.keys(attribsMap).filter(function (k) {
+                    return k !== 'fill';
+                }).reduce(function (attr, key) {
+                    attr[key] = attribsMap[key];
+                    return attr;
+                }, {});
+
+                return (0, _react.createElement)(name, _extends({}, attribsToUse, { style: style }));
             } else {
                 return (0, _react.createElement)(name, _extends({}, attribsMap, { style: style }));
             }
