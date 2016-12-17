@@ -10,7 +10,7 @@ npm install --save-dev react-icon-kit
 
 # Documentation / Demo
 
-Please visit [react-icons-kit](http://wmira.github.io/react-icon-kit/)
+Please visit [react-icons-kit](http://wmira.github.io/react-icons-kit/)
 
 # Icon Sets Available
 

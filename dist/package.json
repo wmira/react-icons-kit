@@ -1,6 +1,6 @@
 {
   "name": "react-icons-kit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "keywords": [
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wmira/react-icon-kit.git"
+    "url": "git+https://github.com/wmira/react-icons-kit.git"
   },
   "peerDependencies": {
     "react": "^15.4.1"
