@@ -1,6 +1,6 @@
 {
   "name": "react-icons-kit",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "description": "",
   "main": "index.js",
   "keywords": [
@@ -10,7 +10,9 @@
     "fontawesome",
     "material design icons",
     "icons",
-    "icons react"
+    "icons react",
+    "react-icons",
+    "react-icons-kit"
   ],
   "author": "Warren Mira <warrenmira@gmail.com>",
   "license": "MIT",

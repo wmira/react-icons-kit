@@ -1,20 +1,21 @@
-react-icons-kit
-=================
+
+# react-icons-kit
 
 
-# Installation
+
+## Installation
 
 ```
 npm install --save-dev react-icons-kit
 ```
 
-# Documentation / Demo
+## Documentation / Demo
 
 Please visit [react-icons-kit](http://wmira.github.io/react-icons-kit/)
 
-# Bundled Icon Sets
+## Bundled Icon Sets
 
-* [`IcoMoon](https://github.com/Keyamoon/IcoMoon-Free) vmaster
+* [`IcoMoon`](https://github.com/Keyamoon/IcoMoon-Free) vmaster
 * [`FontAwesome`](http://fortawesome.github.io/Font-Awesome/icons/) v4.7
 * [`MaterialIcons`](https://www.google.com/design/icons/) v3.0.1
 * [`Open Iconic`](https://github.com/iconic/open-iconic) v1.1.1
@@ -24,7 +25,7 @@ Please visit [react-icons-kit](http://wmira.github.io/react-icons-kit/)
 
 Plus more to come.
 
-# Quick Start Guide
+## Quick Start Guide
 
 ```javascript
     
