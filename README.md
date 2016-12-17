@@ -5,7 +5,7 @@ react-icons-kit
 # Installation
 
 ```
-npm install --save-dev react-icon-kit
+npm install --save-dev react-icons-kit
 ```
 
 # Documentation / Demo
