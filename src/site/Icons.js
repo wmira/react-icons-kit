@@ -23,8 +23,8 @@ const IconContainer = (props) => (
 
 const ICONSET = {
     icomoon,
-    materialDesign,
-    fontawesome,
+    md: materialDesign,
+    fa: fontawesome,
     iconic,
     entypo
 };
@@ -76,8 +76,8 @@ export class Icons extends React.Component {
                     <div >
                         Select Icon Set: <select value={this.state.set} onChange={this.onSetChanged}>
                             <option value={'icomoon'}>IcoMoon</option>
-                            <option value={'fontawesome'}>FontAwesome</option>
-                            <option value={'materialDesign'}>Material Design</option>
+                            <option value={'fa'}>FontAwesome</option>
+                            <option value={'md'}>Material Design</option>
                             <option value={'iconic'}>Open Iconic</option>
                             <option value={'entypo'}>Entypo</option>
                         </select>
