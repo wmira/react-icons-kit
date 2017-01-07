@@ -11,7 +11,7 @@ import './ReacticonsSite.css';
 
 
 
-export class ReacticonsSite extends React.Component {
+export class ReactIconsKitSite extends React.Component {
 
 
     constructor(props) {
@@ -26,7 +26,7 @@ export class ReacticonsSite extends React.Component {
     render() {
         const { active } = this.state;
         return (
-            <div style={{ marginTop: 72, background: '#2196F3' }}>                
+            <div style={{ marginTop: 72, background: '#2196F3' }}>
                 <div className='header-container'>
                     <Header />
                     <Navigation onNavigationChange={this.onNavigationChange}/>

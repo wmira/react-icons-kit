@@ -22,7 +22,7 @@ var SvgIcon = exports.SvgIcon = function SvgIcon(props) {
     return _react2.default.createElement(
         'svg',
         { style: { display: 'inline-block', verticalAlign: 'middle' }, height: size, width: size, viewBox: viewBox },
-        children.map(function (child) {
+        children.map(function (child, idx) {
             var name = child.name,
                 attribsMap = child.attribs;
 
@@ -35,9 +35,9 @@ var SvgIcon = exports.SvgIcon = function SvgIcon(props) {
                     return attr;
                 }, {});
 
-                return (0, _react.createElement)(name, _extends({}, attribsToUse, { style: style }));
+                return (0, _react.createElement)(name, _extends({ key: idx }, attribsToUse, { style: style }));
             } else {
-                return (0, _react.createElement)(name, _extends({}, attribsMap, { style: style }));
+                return (0, _react.createElement)(name, _extends({ key: idx }, attribsMap, { style: style }));
             }
         })
     );

@@ -7,7 +7,7 @@ export const SvgIcon = (props) => {
     const { children, viewBox } = props.icon;
     return (
         <svg style={{ display: 'inline-block', verticalAlign: 'middle'}} height={size} width={size} viewBox={viewBox}>
-            { children.map( (child) => {
+            { children.map( (child, idx) => {
                 const { name, attribs: attribsMap } = child;
                 const style = { fill: props.fill };
                 if ( name === 'path' ) {
@@ -16,9 +16,9 @@ export const SvgIcon = (props) => {
                         return attr;
                     }, {});
 
-                    return createElement(name, { ...attribsToUse, style });
+                    return createElement(name, { key: idx, ...attribsToUse, style });
                 } else {
-                    return createElement(name, { ...attribsMap, style });
+                    return createElement(name, { key: idx, ...attribsMap, style });
                 }
             })}
         </svg>
