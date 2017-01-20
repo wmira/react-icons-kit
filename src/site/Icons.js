@@ -62,35 +62,39 @@ export class Icons extends React.Component {
         const iconSet = ICONSET[this.state.set];
 
         return (
-            <div style={{paddingTop: 20}}>
-                <h3>Icons</h3>
-                <div style={{display: 'flex', justifyContent: 'space-between', padding: 20 }}>
-                    <div>
-                        <pre className='prettyprint lang-javascript'>{`
+            <div>
+                <div style={{background: '#FFF', position: 'fixed', width: '100%'}} >
+                    <div className='container'>
+                        <h3>Icons</h3>
+                        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 20 }}>
+                            <div>
+                                <pre className='prettyprint lang-javascript'>{`
     import Icon from 'react-icons-kit';
-    import { ${this.state.icon} } from 'react-icons-kit/${this.state.set}/${this.state.icon}';
+    import { ${this.state.icon} } from 'react-icons-kit/${this.state.set}/${this.state.icon}';       
 
     <Icon icon={${this.state.icon}} />;                            
-                        `}</pre>
-                    </div>
-                    <div >
-                        Select Icon Set: <select value={this.state.set} onChange={this.onSetChanged}>
-                            <option value={'icomoon'}>IcoMoon</option>
-                            <option value={'fa'}>FontAwesome</option>
-                            <option value={'md'}>Material Design</option>
-                            <option value={'iconic'}>Open Iconic</option>
-                            <option value={'entypo'}>Entypo</option>
-                        </select>
+                                `}</pre>
+                            </div>
+                            <div >
+                                <select style={{padding: 6, background: '#FFF'}} value={this.state.set} onChange={this.onSetChanged}>
+                                    <option value={'icomoon'}>IcoMoon</option>
+                                    <option value={'fa'}>FontAwesome</option>
+                                    <option value={'md'}>Material Design</option>
+                                    <option value={'iconic'}>Open Iconic</option>
+                                    <option value={'entypo'}>Entypo</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div style={{display: 'flex', flexWrap: 'wrap'}}>
+             <div className='container' style={{paddingTop: 220, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center'}}>
                     { Object.keys(iconSet).map( icon => {
                         return (
                             <IconContainer onIconClicked={this.onIconClicked} selected={this.state.icon} key={icon} iconData={iconSet[icon]} iconName={icon} />
                         );
                     })}
-                </div>
             </div>
+        </div>
         );
     }
 }

@@ -6,7 +6,7 @@ import SvgIcon from './SvgIcon';
 export const Icon = (props) => {
 
     return (
-        <div style={{...props.style, display: 'inline-block'}} className={props.className}>
+        <div style={{...props.style, display: 'inline-flex', justifyContent: 'center', alignItems:'center'}} className={props.className}>
             <SvgIcon size={props.size} icon={props.icon}/>
         </div>
     );

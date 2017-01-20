@@ -21,7 +21,7 @@ var Icon = exports.Icon = function Icon(props) {
 
     return _react2.default.createElement(
         'div',
-        { style: _extends({}, props.style, { display: 'inline-block' }), className: props.className },
+        { style: _extends({}, props.style, { display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }), className: props.className },
         _react2.default.createElement(_SvgIcon2.default, { size: props.size, icon: props.icon })
     );
 };

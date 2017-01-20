@@ -2,24 +2,26 @@
 import React from 'react';
 
 import Icon, { withBaseIcon } from 'react-icons-kit';
-import { home, home2, home3 } from 'react-icons-kit/icomoon';
+import { home, home2, home3, pencil } from 'react-icons-kit/icomoon';
+
 
 const IconRed64 = withBaseIcon({ size: 64, style: {color: '#E53935'}});
 const IconPink32 = withBaseIcon({ size: 32, style: {color: '#EC407A'}});
 const IconBrown16 = withBaseIcon({ size: 16, style: {color: '#795548'}});
 
 const Section = (props) => <div className='section-container'>{props.children}</div>;
-const Sep = () => <span style={{paddingRight: 4}}/>
+const Sep = () => <span style={{paddingRight: 4}}/>;
 const InlineBlk = (props) => (<div style={{paddingRight: 6, display: 'inline-block', ...props.style}}>{props.children}</div>);
 
 export const InstallPage = () => (
+    <div className='container'>
     <div style={{paddingTop: 20}}>
         <h3>Install</h3>
         <div style={{ width: '60%', margin: 'auto'}}>
             <pre className='prettyprint'>{`
                         npm install --save-dev react-icons-kit
             `}
-            </pre>        
+            </pre>
         </div>
         <h3>Basic Usage</h3>
         <Section>
@@ -55,7 +57,7 @@ export const InstallPage = () => (
                 </InlineBlk>
             </div>
         </Section>
-        <h3> Changing Colors </h3>        
+        <h3> Changing Colors </h3>
         <Section>
             <div style={{ width: '40%' }}>
                 <pre className='prettyprint lang-javascript'>{`
@@ -128,8 +130,7 @@ export const InstallPage = () => (
                 </InlineBlk>
             </div>
         </Section>
-
-
+    </div>
     </div>
 );
 

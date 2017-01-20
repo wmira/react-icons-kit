@@ -1,7 +1,7 @@
 {
   "name": "react-icons-kit",
-  "version": "1.0.1",
-  "description": "",
+  "version": "1.0.3",
+  "description": "React Icons Kit using various Svg Icon set",
   "main": "index.js",
   "keywords": [
     "react",
@@ -17,6 +17,7 @@
   "author": "Warren Mira <warrenmira@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "predist": "rimraf dist/",
     "dist": "babel src --out-dir dist && cp package.json README.md dist",
     "devsite": "webpack-dev-server src/site/index.js",
     "buildsite": "cross-env NODE_ENV=production webpack  -p src/site/index.js site/bundle.js ",
@@ -41,13 +42,11 @@
     "fstream": "^1.0.10",
     "node-zip": "^1.1.1",
     "react-dom": "^15.4.1",
+    "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
     "svgfont2js": "^0.1.2",
-    "unzip": "^0.1.11",
     "webpack": "^2.1.0-beta.27",
     "webpack-dev-server": "^1.16.2"
   },
-  "dependencies": {
-    "radium-grid": "^2.0.3"
-  }
+  "dependencies": {}
 }

@@ -32,10 +32,10 @@ export class ReactIconsKitSite extends React.Component {
                     <Navigation onNavigationChange={this.onNavigationChange}/>
                 </div>
                 <div className='body-container'>
-                    <div className='container'>
+
                         { active === 'install' ? <InstallPage /> : null }
                         { active === 'icons' ? <Icons /> : null }
-                    </div>
+
                 </div>
             </div>
         );
