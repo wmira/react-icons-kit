@@ -4,9 +4,10 @@ import React, { PropTypes } from 'react';
 import SvgIcon from './SvgIcon';
 
 export const Icon = (props) => {
+    const { style, className, ...others} = props;
 
     return (
-        <div style={{...props.style, display: 'inline-flex', justifyContent: 'center', alignItems:'center'}} className={props.className}>
+        <div {...others} style={{...style, display: 'inline-flex', justifyContent: 'center', alignItems:'center'}} className={className}>
             <SvgIcon size={props.size} icon={props.icon}/>
         </div>
     );
@@ -15,7 +16,7 @@ export const Icon = (props) => {
 export const withBaseIcon = (defaultProps) => props => {
     const propsToUse = {...defaultProps};
 
-    return <Icon {...propsToUse} icon={props.icon}/>;
+    return <Icon {...propsToUse} {...props}/>;
 };
 
 
@@ -26,7 +27,9 @@ Icon.defaultProps = {
 
 Icon.propTypes = {
     icon: PropTypes.object.isRequired,
-    size: PropTypes.number
+    size: PropTypes.number,
+    style: PropTypes.object,
+    className: PropTypes.string
 };
 
 export default Icon;
