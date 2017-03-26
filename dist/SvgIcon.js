@@ -11,7 +11,30 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _camelcase = require('camelcase');
+
+var _camelcase2 = _interopRequireDefault(_camelcase);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var walkChildren = function walkChildren(children) {
+    return children.map(function (child, idx) {
+        var name = child.name,
+            attribsMap = child.attribs,
+            _child$children = child.children,
+            gchildren = _child$children === undefined ? null : _child$children;
+
+        var init = name === 'path' ? { fill: 'currentColor' } : {};
+
+        var attribs = Object.keys(attribsMap).filter(function (key) {
+            return key !== 'fill';
+        }).reduce(function (partial, key) {
+            partial[(0, _camelcase2.default)(key)] = attribsMap[key];
+            return partial;
+        }, init);
+        return (0, _react.createElement)(name, _extends({ key: idx }, attribs), gchildren === null ? gchildren : walkChildren(gchildren));
+    });
+};
 
 var SvgIcon = exports.SvgIcon = function SvgIcon(props) {
     var size = props.size;
@@ -22,36 +45,17 @@ var SvgIcon = exports.SvgIcon = function SvgIcon(props) {
     return _react2.default.createElement(
         'svg',
         { style: { display: 'inline-block', verticalAlign: 'middle' }, height: size, width: size, viewBox: viewBox },
-        children.map(function (child, idx) {
-            var name = child.name,
-                attribsMap = child.attribs;
-
-            var style = { fill: props.fill };
-            if (name === 'path') {
-                var attribsToUse = Object.keys(attribsMap).filter(function (k) {
-                    return k !== 'fill';
-                }).reduce(function (attr, key) {
-                    attr[key] = attribsMap[key];
-                    return attr;
-                }, {});
-
-                return (0, _react.createElement)(name, _extends({ key: idx }, attribsToUse, { style: style }));
-            } else {
-                return (0, _react.createElement)(name, _extends({ key: idx }, attribsMap, { style: style }));
-            }
-        })
+        walkChildren(children)
     );
 };
 
 SvgIcon.defaultProps = {
-    size: '16',
-    fill: 'currentColor'
+    size: '16'
 };
 
 SvgIcon.propTypes = {
     icon: _react.PropTypes.object.isRequired,
-    size: _react.PropTypes.number,
-    fill: _react.PropTypes.string
+    size: _react.PropTypes.number
 };
 
 exports.default = SvgIcon;

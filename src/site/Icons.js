@@ -8,9 +8,9 @@ import * as fontawesome from 'react-icons-kit/fa';
 import * as materialDesign from 'react-icons-kit/md';
 import * as iconic from 'react-icons-kit/iconic';
 import * as entypo from 'react-icons-kit/entypo';
+import * as metrize from 'react-icons-kit/metrize';
+import * as ikons from 'react-icons-kit/ikons';
 
-
-const Sep = () => <span style={{paddingRight: 4}}/>;
 const InlineBlk = (props) => (<div style={{paddingRight: 6, display: 'inline-block'}}>{props.children}</div>);
 
 const IconContainer = (props) => (
@@ -26,7 +26,9 @@ const ICONSET = {
     md: materialDesign,
     fa: fontawesome,
     iconic,
-    entypo
+    entypo,
+    metrize,
+    ikons
 };
 
 export class Icons extends React.Component {
@@ -82,6 +84,8 @@ export class Icons extends React.Component {
                                     <option value={'md'}>Material Design</option>
                                     <option value={'iconic'}>Open Iconic</option>
                                     <option value={'entypo'}>Entypo</option>
+                                    <option value={'metrize'}>Metrize</option>
+                                    <option value={'ikons'}>Ikons</option>
                                 </select>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 {
   "name": "react-icons-kit",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "React Icons Kit using various Svg Icon set",
   "main": "index.js",
   "keywords": [
@@ -20,7 +20,7 @@
     "predist": "rimraf dist/",
     "dist": "babel src --out-dir dist && cp package.json README.md dist",
     "devsite": "webpack-dev-server src/site/index.js",
-    "buildsite": "cross-env NODE_ENV=production webpack  -p src/site/index.js site/bundle.js ",
+    "buildsite": "cross-env webpack src/site/index.js site/bundle.js ",
     "test-watch": "mocha --compilers js:babel-register --recursive --watch "
   },
   "repository": {
@@ -36,6 +36,7 @@
     "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-2": "^6.18.0",
+    "camelcase": "^4.0.0",
     "cheerio": "^0.22.0",
     "cross-env": "^3.1.3",
     "css-loader": "^0.26.1",

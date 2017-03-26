@@ -18,7 +18,11 @@ const TRANSLATE_MAP = {
     '500px': 'fiveHundredPX',
     'switch': 'switchIcon',
     'delete': 'deleteIconic',
-    'in': 'inIconic'
+    'in': 'inIconic',
+    '2': 'numberTwo',
+    'document': 'documentIcon',
+    '3dCube': 'threeDCube'
+
 };
 
 const findViewBox = contents => {
@@ -84,7 +88,29 @@ const writeIconModule = (exps, filename) => {
     });
 };
 
-const readFromSvgContent = (content, fname) => {
+const collectAttribs = $el => {
+    return Object.keys($el.attribs).filter( attr => attr.indexOf(':') < 0 ).reduce( (obj, key) => {
+        obj[key] = $el.attribs[key];
+        return obj;
+    }, {});
+};
+
+const walkChildren = ($, $el, childrenArr = [] ) => {
+
+    const attribs = collectAttribs($el);
+    const name = $el.name;
+
+    const grandChildren = [];
+    $($el).children().each( (index, $cel) => {
+        const name = $cel.name;
+
+        grandChildren.push({ name, attribs: collectAttribs($cel), children: walkChildren($, $cel) });
+    });
+    childrenArr.push({ name, attribs, children: grandChildren });
+    return childrenArr;
+};
+
+const readFromSvgContent = (content) => {
 
     const $ = cheerio.load(content, { xmlMode: true, normalizeWhiteSpace: true });
     const children = [];
@@ -92,14 +118,7 @@ const readFromSvgContent = (content, fname) => {
     const $svg = $('svg');
 
     $svg.children().each( (index, $el) => {
-        const name = $el.name;
-        //const attributes =
-
-        const attribs = Object.keys($el.attribs).reduce( (obj, key) => {
-            obj[key] = $el.attribs[key];
-            return obj;
-        }, {});
-        children.push({ name, attribs });
+        walkChildren($, $el, children);
     });
 
     return { children, viewBox: $svg[0].attribs['viewBox'] };
@@ -111,26 +130,26 @@ const generateFromSvgFiles = (svgFolder, outFolder, options = {} ) => {
     const { writeExportLines = true, exportedNames = {} } = options;
 
     const extractName = file => {
-        const idxDash = file.indexOf('-') + 1;
         const idxSvg = file.indexOf('.svg');
-        return file.substring(idxDash, idxSvg);
+        return file.substring(0, idxSvg);
     };
 
-    const files = fs.readdirSync(svgFolder, 'UTF-8').filter( f => f.indexOf('.svg') >= 0 );
+    const files = fs.readdirSync(svgFolder, 'UTF-8').filter( f => {
+        return f.indexOf('.svg') >= 0;
+    });
     const parsedFiles = files.map( f => {
+        console.log('reading content: ', f);
         const content = fs.readFileSync(path.join(svgFolder,f), { encoding: 'UTF-8' });
 
         const { viewBox, children } = readFromSvgContent(content, f);
-        return { name: exportableName(extractName(f)), children, viewBox };
+        return { name: exportableName(extractName(f)), children, viewBox, f };
     });
     //write it
     const exportLines = parsedFiles.map( parsed => {
 
         const { name } = parsed;
-
         if ( !exportedNames[name] ) {
             const safeExportName = TRANSLATE_MAP[name] ? TRANSLATE_MAP[name] : name;
-
             const { viewBox, children } = parsed;
 
             const exportLine = createExportLine(safeExportName, viewBox, children); //`export const ${safeExportName} = ${exportedObject};`;

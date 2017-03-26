@@ -1,8 +1,8 @@
 
 import React from 'react';
 
-import Icon, { withBaseIcon } from 'react-icons-kit';
-import { home, home2, home3, pencil } from 'react-icons-kit/icomoon';
+import Icon, { withBaseIcon, horizontalCenter } from 'react-icons-kit';
+import { home, home2, home3 } from 'react-icons-kit/icomoon';
 
 
 const IconRed64 = withBaseIcon({ size: 64, style: {color: '#E53935'}});
@@ -12,6 +12,9 @@ const IconBrown16 = withBaseIcon({ size: 16, style: {color: '#795548'}});
 const Section = (props) => <div className='section-container'>{props.children}</div>;
 const Sep = () => <span style={{paddingRight: 4}}/>;
 const InlineBlk = (props) => (<div style={{paddingRight: 6, display: 'inline-block', ...props.style}}>{props.children}</div>);
+
+const MyButton = horizontalCenter(props => <button>{props.children}</button>);
+
 
 export const InstallPage = () => (
     <div className='container'>
@@ -56,6 +59,30 @@ export const InstallPage = () => (
                     <Icon size={64} icon={home3}/><Sep />
                 </InlineBlk>
             </div>
+        </Section>
+        <h3>Horizontal Centering</h3>
+        <Section>
+            <div style={{ width: '40%' }}>
+                <pre className='prettyprint lang-javascript'>{`
+    //use the higher order component horizontalCenter which
+    //takes a component that accepts a list of children. It will
+    //auto align the child items using flex.
+
+    import { horizontalCenter } from 'react-icons-kit';
+    const MyButton = 
+        horizontalCenter(
+            props => <button>{props.children}</button>
+        );
+    <MyButton><IconBrown16 icon={home3}/> Press Me </MyButton>
+    
+                `}
+                </pre>
+            </div>
+            <div style={{ width: '40%', margin: 'auto' }}>
+                <MyButton><IconBrown16 icon={home3}/> Home 1 </MyButton>
+                <MyButton><IconBrown16 icon={home2}/> Home 2 </MyButton>
+            </div>
+
         </Section>
         <h3> Changing Colors </h3>
         <Section>
@@ -131,6 +158,7 @@ export const InstallPage = () => (
             </div>
         </Section>
     </div>
+
     </div>
 );
 

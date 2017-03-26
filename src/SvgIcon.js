@@ -1,5 +1,20 @@
 
 import React, { createElement, PropTypes } from 'react';
+import camelcase from 'camelcase';
+
+const walkChildren = (children) => {
+    return children.map((child, idx ) => {
+        const { name, attribs: attribsMap, children: gchildren = null } = child;
+        const init = name === 'path' ? { fill: 'currentColor' } : {};
+
+        const attribs = Object.keys(attribsMap).filter( key => key !== 'fill' ).reduce( (partial, key) => {
+            partial[camelcase(key)] = attribsMap[key];
+            return partial;
+        }, init);
+        return createElement(name, { key: idx, ...attribs }, gchildren === null ? gchildren : walkChildren(gchildren));
+    });
+};
+
 
 export const SvgIcon = (props) => {
 
@@ -7,33 +22,18 @@ export const SvgIcon = (props) => {
     const { children, viewBox } = props.icon;
     return (
         <svg style={{ display: 'inline-block', verticalAlign: 'middle'}} height={size} width={size} viewBox={viewBox}>
-            { children.map( (child, idx) => {
-                const { name, attribs: attribsMap } = child;
-                const style = { fill: props.fill };
-                if ( name === 'path' ) {
-                    const attribsToUse = Object.keys(attribsMap).filter( k => k !== 'fill' ).reduce( (attr, key) => {
-                        attr[key] = attribsMap[key];
-                        return attr;
-                    }, {});
-
-                    return createElement(name, { key: idx, ...attribsToUse, style });
-                } else {
-                    return createElement(name, { key: idx, ...attribsMap, style });
-                }
-            })}
+            { walkChildren(children) }
         </svg>
     );
 };
 
 SvgIcon.defaultProps = {
-    size: '16',
-    fill: 'currentColor'
+    size: '16'
 };
 
 SvgIcon.propTypes = {
     icon: PropTypes.object.isRequired,
-    size: PropTypes.number,
-    fill: PropTypes.string
+    size: PropTypes.number
 };
 
 export default SvgIcon;

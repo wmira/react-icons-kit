@@ -20,10 +20,15 @@ Please visit [react-icons-kit](http://wmira.github.io/react-icons-kit/)
 * [`MaterialIcons`](https://www.google.com/design/icons/) v3.0.1
 * [`Open Iconic`](https://github.com/iconic/open-iconic) v1.1.1
 * [`Entypo`](http://entypo.com) latest
-
+* [`Ikons`](http://ikons.piotrkwiatkowski.co.uk/) latest
+* [`Metrize`](http://www.alessioatzeni.com/metrize-icons/) latest
 
 
 Plus more to come.
+
+## Browse Icon Sets
+
+Browse all available icons here: [react-icons-kit](http://wmira.github.io/react-icons-kit/)
 
 ## Quick Start Guide
 
