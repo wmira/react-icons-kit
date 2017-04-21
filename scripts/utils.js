@@ -138,7 +138,6 @@ const generateFromSvgFiles = (svgFolder, outFolder, options = {} ) => {
         return f.indexOf('.svg') >= 0;
     });
     const parsedFiles = files.map( f => {
-        console.log('reading content: ', f);
         const content = fs.readFileSync(path.join(svgFolder,f), { encoding: 'UTF-8' });
 
         const { viewBox, children } = readFromSvgContent(content, f);
@@ -168,4 +167,25 @@ const generateFromSvgFiles = (svgFolder, outFolder, options = {} ) => {
     return exportLines;
 };
 
-module.exports = { readFromSvgContent, createExportLine, findViewBox, extractPaths, exportableName, generateExportCode, writeIconModule, generateFromSvgFiles };
+const findAllSvgFiles = (filterName, filterDir, dir, filelist = []) => {
+    fs.readdirSync(dir).forEach(file => {
+        filelist = fs.statSync(path.join(dir, file)).isDirectory()
+        ? findAllSvgFiles(filterName, filterDir, path.join(dir, file), filelist)
+        : filelist.filter(filterName).concat(path.join(dir, file));
+
+    });
+    return filelist;
+
+};
+
+module.exports = {
+    findAllSvgFiles ,
+    readFromSvgContent,
+    createExportLine,
+    findViewBox,
+    extractPaths,
+    exportableName,
+    generateExportCode,
+    writeIconModule,
+    generateFromSvgFiles
+};

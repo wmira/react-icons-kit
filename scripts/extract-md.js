@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const { writeIconModule, createExportLine,
-    readFromSvgContent } = require('./utils');
+    readFromSvgContent, findAllSvgFiles : baseFindAllSvgFiles } = require('./utils');
 const baseFolder = 'material-design-icons-3.0.1';
 
 const outFolder = path.join('..', 'src', 'md');
@@ -15,19 +15,7 @@ const outFolder = path.join('..', 'src', 'md');
  */
 const filterName = f => f.indexOf('svg/production') >= 0;
 const filterSize = f => f.indexOf('_24px') >= 0;
-const findAllSvgFiles = (dir, filelist = []) => {
-
-    fs.readdirSync(dir).forEach(file => {
-
-        filelist = fs.statSync(path.join(dir, file)).isDirectory()
-        ? findAllSvgFiles(path.join(dir, file), filelist)
-        : filelist.filter(filterName).concat(path.join(dir, file));
-
-    });
-
-    return filelist;
-};
-
+const findAllSvgFiles = baseFindAllSvgFiles(filterName);
 
 
 const extractName = fname => {

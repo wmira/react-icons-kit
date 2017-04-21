@@ -2,7 +2,7 @@
 // http://ikons.piotrkwiatkowski.co.uk/index.html
 const path = require('path');
 //
-const { generateFromSvgFiles, exportableName } = require('./utils');
+const { generateFromSvgFiles } = require('./utils');
 
 
 const workingFolder = './ikons';
