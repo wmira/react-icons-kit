@@ -1,41 +1,41 @@
 
 import React from 'react';
 
-import Icon from 'react-icons-kit';
+import Icon from '../Icon';
 
-import * as icomoon from 'react-icons-kit/icomoon';
-import * as fontawesome from 'react-icons-kit/fa';
-import * as materialDesign from 'react-icons-kit/md';
-import * as iconic from 'react-icons-kit/iconic';
-import * as entypo from 'react-icons-kit/entypo';
-import * as metrize from 'react-icons-kit/metrize';
-import * as ikons from 'react-icons-kit/ikons';
+const IMPORTS = {
+    icomoon: { module: '../icomoon', title: 'IcoMoon' },
+    md: { module: '../fa', title: 'Material Design' },
+    fa: { module: '../md', title: 'FontAwesome' },
+    iconic: { module: '../iconic', title: 'Ionic' },
+    entypo: { module: '../entypo', title: 'Entypo' },
+    metrize: { module: '../metrize', title: 'Metrize' },
+    ikons: { module: '../ikons', title: 'Ikons' },
+    linea: { module: '../ikons', title: 'Linea' },
+    ionicons: { module: '../ionicons', title: 'Ionics' },
+    oct: { module: '../oct', title: 'Octicons' },
+    typicons: { module: '../typicons', title: 'Typicons' }
+};
 
-const InlineBlk = (props) => (<div style={{paddingRight: 6, display: 'inline-block'}}>{props.children}</div>);
+
+const ICONSET = Object.keys(IMPORTS);
+
 
 const IconContainer = (props) => (
     <div className={'icon-container ' + (props.selected === props.iconName ? 'icon-container-selected' : '' )}
         data-icon={props.iconName} onClick={props.onIconClicked}>
-        <div><Icon size={32} icon={props.iconData} /></div>
+        <div ><Icon size={32} icon={props.iconData} /></div>
         <div style={{paddingTop: 4, fontSize: 10}}>{props.iconName}</div>
     </div>
 );
 
-const ICONSET = {
-    icomoon,
-    md: materialDesign,
-    fa: fontawesome,
-    iconic,
-    entypo,
-    metrize,
-    ikons
-};
 
 export class Icons extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { set: 'icomoon', icon: 'home' };
+        this.state = { set: 'icomoon', icon: 'home', iconset: null };
+       
     }
     onIconClicked = (e) => {
         const { target } = e;
@@ -55,13 +55,60 @@ export class Icons extends React.Component {
 
     onSetChanged = (e) => {
         const { target } = e;
-        const icon = Object.keys(ICONSET[target.value])[0];
-        this.setState({ set: target.value, icon });
+
+        this.setState({ set: target.value }, () => {
+            this.loadIcon(this.state.set);
+        });
+    }
+
+    componentDidMount() {
+        this.loadIcon(this.state.set);
+    }
+
+    icomoon = () => {
+        return import('../icomoon');
+    }
+
+    md = () => {
+        return import('../md');  //handcranked ftw!
+    }
+    fa = () => {
+        return import('../fa');  //handcranked ftw!
+    }
+    iconic = () => {
+        return import('../iconic');  //handcranked ftw!
+    }
+    entypo = () => {
+        return import('../entypo');  //handcranked ftw!
+    }
+    metrize = () => {
+        return import('../metrize');  //handcranked ftw!
+    }
+    ikons = () => {
+        return import('../ikons');  //handcranked ftw!
+    }
+    linea = () => {
+        return import('../linea');  //handcranked ftw!
+    }
+    ionicons = () => {
+        return import('../ionicons');  //handcranked ftw!
+    }
+    oct = () => {
+        return import('../oct');  //handcranked ftw!
+    }
+    typicons = () => {
+        return import('../typicons');  //handcranked ftw!
+    }
+
+    loadIcon = (set) => {
+        
+        const importData = IMPORTS[set];
+        this[set]().then( data => {            
+            this.setState({ iconset: data } );
+        })
     }
 
     render() {
-
-        const iconSet = ICONSET[this.state.set];
 
         return (
             <div>
@@ -79,25 +126,21 @@ export class Icons extends React.Component {
                             </div>
                             <div >
                                 <select style={{padding: 6, background: '#FFF'}} value={this.state.set} onChange={this.onSetChanged}>
-                                    <option value={'icomoon'}>IcoMoon</option>
-                                    <option value={'fa'}>FontAwesome</option>
-                                    <option value={'md'}>Material Design</option>
-                                    <option value={'iconic'}>Open Iconic</option>
-                                    <option value={'entypo'}>Entypo</option>
-                                    <option value={'metrize'}>Metrize</option>
-                                    <option value={'ikons'}>Ikons</option>
+                                    { ICONSET.map( key => <option key={key} value={key}>{ IMPORTS[key].title }</option> ) }
                                 </select>
                             </div>
                         </div>
                     </div>
                 </div>
-             <div className='container' style={{paddingTop: 220, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center'}}>
-                    { Object.keys(iconSet).map( icon => {
+                
+             { this.state.iconset ? (<div className='container' style={{paddingTop: 220, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center'}}>
+                    { Object.keys(this.state.iconset).map( icon => {
                         return (
-                            <IconContainer onIconClicked={this.onIconClicked} selected={this.state.icon} key={icon} iconData={iconSet[icon]} iconName={icon} />
+                            <IconContainer onIconClicked={this.onIconClicked} 
+                                selected={this.state.icon} key={icon} iconData={this.state.iconset[icon]} iconName={icon} />
                         );
                     })}
-            </div>
+            </div>) : <div>Please Wait...</div> }
         </div>
         );
     }

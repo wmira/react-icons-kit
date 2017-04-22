@@ -1,5 +1,6 @@
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const PAGES = {
     install: { title: 'Install and Usage' },
@@ -17,6 +18,12 @@ const NavItem = (props) => {
             { isActive ? <div className='navigation-active-indicator'></div> : null }
         </div>
     );
+};
+
+NavItem.propTypes = {
+    active: PropTypes.string,
+    page: PropTypes.string,
+    onClick: PropTypes.func
 };
 
 export class Navigation extends React.Component {

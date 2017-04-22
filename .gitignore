@@ -4,3 +4,5 @@ scripts/icomoon
 scripts/*.zip
 npm*debug*.log
 site/bundle.js
+.vscode
+.react-playground

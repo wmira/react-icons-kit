@@ -1,8 +1,8 @@
 
 import React from 'react';
 
-import Icon, { withBaseIcon, horizontalCenter } from 'react-icons-kit';
-import { home, home2, home3 } from 'react-icons-kit/icomoon';
+import Icon, { withBaseIcon, horizontalCenter } from '../';
+import { home, home2, home3 } from '../icomoon';
 
 
 const IconRed64 = withBaseIcon({ size: 64, style: {color: '#E53935'}});

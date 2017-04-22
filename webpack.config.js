@@ -1,17 +1,21 @@
 
-const path = require('path');
+
+const webpack = require('webpack');
 
 const plugins = [];
 
+if ( process.env.NODE_ENV === 'production' ) {
+    plugins.push(new webpack.optimize.UglifyJsPlugin());
+    plugins.push(new webpack.DefinePlugin({
+        'process.env': {
+            NODE_ENV: JSON.stringify('production')
+        }
+    }));
+}
 
 module.exports = {
 
-    resolve: {
-        alias: {
-            'react-icons-kit': path.join(__dirname, 'src')
-            /* , 'react-containers': path.join(__dirname, 'react-containers', 'src') */
-        }
-    },
+
     node: {
         buffer: false
     },
