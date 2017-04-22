@@ -1,6 +1,0 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var ic_vertical_align_top = exports.ic_vertical_align_top = { "viewBox": "0 0 24 24", "children": [{ "name": "path", "attribs": { "d": "M8 11h3v10h2V11h3l-4-4-4 4zM4 3v2h16V3H4z" } }] };

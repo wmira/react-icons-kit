@@ -1,6 +1,0 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var forward3 = exports.forward3 = { "viewBox": "0 0 16 16", "children": [{ "name": "path", "attribs": { "fill": "#000000", "d": "M8 13.5v-5l-5 5v-11l5 5v-5l5.5 5.5z" } }] };
