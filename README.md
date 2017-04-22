@@ -2,7 +2,6 @@
 # react-icons-kit
 
 
-
 ## Installation
 
 ```
@@ -22,6 +21,10 @@ Please visit [react-icons-kit](http://wmira.github.io/react-icons-kit/)
 * [`Entypo`](http://entypo.com) latest
 * [`Ikons`](http://ikons.piotrkwiatkowski.co.uk/) latest
 * [`Metrize`](http://www.alessioatzeni.com/metrize-icons/) latest
+* [`Octicons`](https://octicons.github.com/) v5.0.1
+* [`Ionicons`](http://ionicons.com/) v2.0.1
+* [`Linea`](http://linea.io/) latest
+* [`Typicons`](http://typicons.com/) v2.0.8
 
 
 Plus more to come.
