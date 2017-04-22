@@ -15,4 +15,5 @@ export const horizontalCenter = (Component, { rAlign = false, space = 4 } = {}) 
     );
 };
 
+
 export default horizontalCenter;

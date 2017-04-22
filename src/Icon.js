@@ -1,10 +1,11 @@
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import SvgIcon from './SvgIcon';
 
 export const Icon = (props) => {
-    const { style, className, ...others} = props;
+    const { style, className, icon, ...others} = props; //eslint-disable-line
 
     return (
         <div {...others} style={{...style, display: 'inline-flex', justifyContent: 'center', alignItems:'center'}} className={className}>
