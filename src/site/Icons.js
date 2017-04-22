@@ -39,7 +39,7 @@ export class Icons extends React.Component {
     }
     onIconClicked = (e) => {
         const { target } = e;
-
+        const { iconset } = this.state;
         let icon = null;
         let currentTarget = target;
         while ( !icon ) {
@@ -48,7 +48,7 @@ export class Icons extends React.Component {
                 currentTarget = currentTarget.parentElement;
             }
         }
-        if ( ICONSET[this.state.set][icon] ) {
+        if ( iconset[icon] ) {
             this.setState({ icon });
         }
     }
@@ -103,8 +103,9 @@ export class Icons extends React.Component {
     loadIcon = (set) => {
         
         const importData = IMPORTS[set];
-        this[set]().then( data => {            
-            this.setState({ iconset: data } );
+        this[set]().then( data => {        
+
+            this.setState({ iconset: data, icon: Object.keys(data)[0] } );
         })
     }
 

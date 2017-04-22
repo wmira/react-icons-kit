@@ -31,7 +31,6 @@ module.exports = {
 
     devServer: {
         port: 8081,
-        contentBase: 'site',
         inline: true
     }
 
