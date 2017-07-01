@@ -14,7 +14,8 @@ const IMPORTS = {
     linea: { module: '../ikons', title: 'Linea' },
     ionicons: { module: '../ionicons', title: 'Ionics' },
     oct: { module: '../oct', title: 'Octicons' },
-    typicons: { module: '../typicons', title: 'Typicons' }
+    typicons: { module: '../typicons', title: 'Typicons' },
+    noto_emoji_regular: { module: '../noto_emoji_regular', title: 'Noto Emoji Regular' }
 };
 
 
@@ -35,7 +36,6 @@ export class Icons extends React.Component {
     constructor(props) {
         super(props);
         this.state = { set: 'icomoon', icon: 'home', iconset: null };
-       
     }
     onIconClicked = (e) => {
         const { target } = e;
@@ -99,11 +99,14 @@ export class Icons extends React.Component {
     typicons = () => {
         return import('../typicons');  //handcranked ftw!
     }
+    noto_emoji_regular = () => {
+        return import('../noto_emoji_regular');  //handcranked ftw!
+    }
 
     loadIcon = (set) => {
-        
+
         const importData = IMPORTS[set];
-        this[set]().then( data => {        
+        this[set]().then( data => {
 
             this.setState({ iconset: data, icon: Object.keys(data)[0] } );
         })
@@ -120,9 +123,9 @@ export class Icons extends React.Component {
                             <div>
                                 <pre className='prettyprint lang-javascript'>{`
     import Icon from 'react-icons-kit';
-    import { ${this.state.icon} } from 'react-icons-kit/${this.state.set}/${this.state.icon}';       
+    import { ${this.state.icon} } from 'react-icons-kit/${this.state.set}/${this.state.icon}';
 
-    <Icon icon={${this.state.icon}} />;                            
+    <Icon icon={${this.state.icon}} />;
                                 `}</pre>
                             </div>
                             <div >
@@ -133,11 +136,11 @@ export class Icons extends React.Component {
                         </div>
                     </div>
                 </div>
-                
+
              { this.state.iconset ? (<div className='container' style={{paddingTop: 220, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center'}}>
                     { Object.keys(this.state.iconset).map( icon => {
                         return (
-                            <IconContainer onIconClicked={this.onIconClicked} 
+                            <IconContainer onIconClicked={this.onIconClicked}
                                 selected={this.state.icon} key={icon} iconData={this.state.iconset[icon]} iconName={icon} />
                         );
                     })}
