@@ -1,0 +1,1 @@
+export const u25AA = {"viewBox":"0 0 2600 2760.837","children":[{"name":"path","attribs":{"d":"M1557 1662h-513v-516h513v516z"},"children":[]}]};

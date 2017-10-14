@@ -1,0 +1,1 @@
+export const u2B07 = {"viewBox":"0 0 2600 2760.837","children":[{"name":"path","attribs":{"d":"M1299 2278l-643-877h402V583h479v818h406z"},"children":[]}]};

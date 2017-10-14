@@ -1,0 +1,1 @@
+export const u0037 = {"viewBox":"0 0 2600 2760.837","children":[{"name":"path","attribs":{"d":"M918 2432l771-1775H656V430h1288v198l-760 1804H918z"},"children":[]}]};

@@ -25,7 +25,7 @@ Please visit [react-icons-kit](http://wmira.github.io/react-icons-kit/)
 * [`Ionicons`](http://ionicons.com/) v2.0.1
 * [`Linea`](http://linea.io/) latest
 * [`Typicons`](http://typicons.com/) v2.0.8
-
+* [`Noto Emoji Regular`](https://www.google.com/get/noto/#emoji-zsye/) latest
 
 Plus more to come.
 
@@ -36,7 +36,7 @@ Browse all available icons here: [react-icons-kit](http://wmira.github.io/react-
 ## Quick Start Guide
 
 ```javascript
-    
+
     import Icon from 'react-icons-kit';
     import { ic_add_a_photo } from 'react-icons-kit/md/ic_add_a_photo';
     import { lock } from 'react-icons-kit/fa/lock';
