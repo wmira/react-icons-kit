@@ -35,7 +35,7 @@ export const InstallPage = () => (
     //import icons
 
     import { home } from 'react-icons-kit/icomoon';
-                
+
     <Icon icon={home}/>
     <Icon size={32} icon={home}/>
     <Icon size={64} icon={home}/>
@@ -69,12 +69,12 @@ export const InstallPage = () => (
     //auto align the child items using flex.
 
     import { horizontalCenter } from 'react-icons-kit';
-    const MyButton = 
+    const MyButton =
         horizontalCenter(
             props => <button>{props.children}</button>
         );
     <MyButton><IconBrown16 icon={home3}/> Press Me </MyButton>
-    
+
                 `}
                 </pre>
             </div>
@@ -88,9 +88,9 @@ export const InstallPage = () => (
         <Section>
             <div style={{ width: '40%' }}>
                 <pre className='prettyprint lang-javascript'>{`
-    
+
     //by default it will take color of container
-                
+
     <div style={{ color: 'orange' }}>
         <Icon icon={home}/></div>
         <Icon size={32} icon={home}/>
@@ -126,13 +126,13 @@ export const InstallPage = () => (
     import { home } from 'react-icons-kit/icomoon';
     import { home2 } from 'react-icons-kit/icomoon';
     import { home3 } from 'react-icons-kit/icomoon';
-    
-    //you can compose icon to prevent repetitive 
+
+    //you can compose icon to prevent repetitive
     //args like size and color
 
-    const IconRed64 = 
+    const IconRed64 =
         withBaseIcon({ size: 32, style: {color: '##E53935'}});
-                
+
     <IconRed64 icon={home}/>
     <IconRed64 icon={home2}/>
     <IconRed64 icon={home3}/>
@@ -154,6 +154,27 @@ export const InstallPage = () => (
                     <IconBrown16 icon={home3}/><Sep />
                     <IconBrown16 icon={home3}/><Sep />
                     <IconBrown16 icon={home3}/><Sep />
+                </InlineBlk>
+            </div>
+        </Section>
+        <h3>Title attribute</h3>
+        <Section>
+            <div style={{ width: '40%' }}>
+                <pre className='prettyprint lang-javascript'>{`
+    import Icon from 'react-icons-kit';
+
+    // Use the title attribute to make the icon meaningful
+    // to users with assistive technology
+
+    import { home } from 'react-icons-kit/icomoon';
+
+    <Icon icon={home} title="Go to the homepage" />
+                `}
+                </pre>
+            </div>
+            <div style={{ width: '40%', margin: 'auto' }}>
+                <InlineBlk>
+                    <Icon size={64} icon={home} title="Go to the home page"/><Sep />
                 </InlineBlk>
             </div>
         </Section>

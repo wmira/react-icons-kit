@@ -9,7 +9,7 @@ export const Icon = (props) => {
 
     return (
         <div {...others} style={{display: 'inline-flex', justifyContent: 'center', alignItems:'center', ...style}} className={className}>
-            <SvgIcon size={props.size} icon={props.icon}/>
+            <SvgIcon size={props.size} icon={props.icon} title={props.title} />
         </div>
     );
 };

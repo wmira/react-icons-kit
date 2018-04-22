@@ -31,6 +31,7 @@ export const SvgIcon = (props) => {
     const { children, viewBox } = props.icon;
     return (
         <svg fill='currentColor' style={{ display: 'inline-block', verticalAlign: 'middle'}} height={size} width={size} viewBox={viewBox}>
+            { props.title && <title>{props.title}</title> }
             { walkChildren(children) }
         </svg>
     );
@@ -42,7 +43,8 @@ SvgIcon.defaultProps = {
 
 SvgIcon.propTypes = {
     icon: PropTypes.object.isRequired,
-    size: PropTypes.number
+    size: PropTypes.number,
+    title: PropTypes.string
 };
 
 export default SvgIcon;
