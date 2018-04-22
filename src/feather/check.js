@@ -1,0 +1,1 @@
+export const check = {"viewBox":"0 0 24 24","children":[{"name":"polyline","attribs":{"points":"20 6 9 17 4 12"},"children":[]}]};

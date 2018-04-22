@@ -134,10 +134,10 @@ const generateFromSvgFiles = (svgFolder, outFolder, options = {} ) => {
         return file.substring(0, idxSvg);
     };
 
-    const files = fs.readdirSync(svgFolder, 'UTF-8').filter( f => {
+    const files = fs.readdirSync(svgFolder, 'UTF-8').filter( f => {        
         return f.indexOf('.svg') >= 0;
     });
-    const parsedFiles = files.map( f => {
+    const parsedFiles = files.map( f => {        
         const content = fs.readFileSync(path.join(svgFolder,f), { encoding: 'UTF-8' });
 
         const { viewBox, children } = readFromSvgContent(content, f);

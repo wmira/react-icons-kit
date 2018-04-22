@@ -1,0 +1,1 @@
+export const skipForward = {"viewBox":"0 0 24 24","children":[{"name":"polygon","attribs":{"points":"5 4 15 12 5 20 5 4"},"children":[]},{"name":"line","attribs":{"x1":"19","y1":"5","x2":"19","y2":"19"},"children":[]}]};

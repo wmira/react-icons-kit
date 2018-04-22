@@ -1,0 +1,1 @@
+export const bluetooth = {"viewBox":"0 0 24 24","children":[{"name":"polyline","attribs":{"points":"6.5 6.5 17.5 17.5 12 23 12 1 17.5 6.5 6.5 17.5"},"children":[]}]};

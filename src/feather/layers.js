@@ -1,0 +1,1 @@
+export const layers = {"viewBox":"0 0 24 24","children":[{"name":"polygon","attribs":{"points":"12 2 2 7 12 12 22 7 12 2"},"children":[]},{"name":"polyline","attribs":{"points":"2 17 12 22 22 17"},"children":[]},{"name":"polyline","attribs":{"points":"2 12 12 17 22 12"},"children":[]}]};

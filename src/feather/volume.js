@@ -1,0 +1,1 @@
+export const volume = {"viewBox":"0 0 24 24","children":[{"name":"polygon","attribs":{"points":"11 5 6 9 2 9 2 15 6 15 11 19 11 5"},"children":[]}]};

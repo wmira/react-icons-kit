@@ -1,0 +1,1 @@
+export const arrowDownLeft = {"viewBox":"0 0 24 24","children":[{"name":"line","attribs":{"x1":"17","y1":"7","x2":"7","y2":"17"},"children":[]},{"name":"polyline","attribs":{"points":"17 17 7 17 7 7"},"children":[]}]};

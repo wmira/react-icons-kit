@@ -1,0 +1,1 @@
+export const barChart2 = {"viewBox":"0 0 24 24","children":[{"name":"line","attribs":{"x1":"18","y1":"20","x2":"18","y2":"10"},"children":[]},{"name":"line","attribs":{"x1":"12","y1":"20","x2":"12","y2":"4"},"children":[]},{"name":"line","attribs":{"x1":"6","y1":"20","x2":"6","y2":"14"},"children":[]}]};

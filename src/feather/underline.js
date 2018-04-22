@@ -1,0 +1,1 @@
+export const underline = {"viewBox":"0 0 24 24","children":[{"name":"path","attribs":{"d":"M6 3v7a6 6 0 0 0 6 6 6 6 0 0 0 6-6V3"},"children":[]},{"name":"line","attribs":{"x1":"4","y1":"21","x2":"20","y2":"21"},"children":[]}]};

@@ -1,0 +1,1 @@
+export const percent = {"viewBox":"0 0 24 24","children":[{"name":"line","attribs":{"x1":"19","y1":"5","x2":"5","y2":"19"},"children":[]},{"name":"circle","attribs":{"cx":"6.5","cy":"6.5","r":"2.5"},"children":[]},{"name":"circle","attribs":{"cx":"17.5","cy":"17.5","r":"2.5"},"children":[]}]};

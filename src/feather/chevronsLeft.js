@@ -1,0 +1,1 @@
+export const chevronsLeft = {"viewBox":"0 0 24 24","children":[{"name":"polyline","attribs":{"points":"11 17 6 12 11 7"},"children":[]},{"name":"polyline","attribs":{"points":"18 17 13 12 18 7"},"children":[]}]};
