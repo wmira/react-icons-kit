@@ -28,7 +28,7 @@ Icon.defaultProps = {
 
 Icon.propTypes = {
     icon: PropTypes.object.isRequired,
-    size: PropTypes.number,
+    size: PropTypes.oneOfType[PropTypes.number, PropTypes.string],
     style: PropTypes.object,
     className: PropTypes.string
 };
