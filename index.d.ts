@@ -3,7 +3,6 @@
 declare module "react-icons-kit" {
     import * as React from 'react'
 
-
     interface IconProps {
         size?: number | string
         style?: object
