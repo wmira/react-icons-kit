@@ -1,7 +1,6 @@
 
 # react-icons-kit
 
-
 ## Installation
 
 ```
@@ -31,7 +30,7 @@ Plus more to come.
 
 ## Browse Icon Sets
 
-Browse all available icons here: [react-icons-kit](http://wmira.github.io/react-icons-kit/)
+Browse all available icons here: [react-icons-kit](http://wmira.github.io/react-icons-kit/index.html)
 
 ## Quick Start Guide
 
@@ -51,3 +50,22 @@ Browse all available icons here: [react-icons-kit](http://wmira.github.io/react-
         )
     }
 ```
+
+## Development
+
+### React Icons Kit Site
+
+To update the react-icons-kit site deployed at [react-icons-kit](http://wmira.github.io/react-icons-kit/index.html), you need to first
+do the following. Assuming you are at the root folder:
+
+1. npm install
+2. npm run dist
+3. cd site
+4. npm install
+5. cd node_modules
+6. ln -sf ../../dist react-icons-kit
+7. cd ..
+8. npm start
+
+You should now be able to live edit the website to do some changes, submit pull request.
+

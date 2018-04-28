@@ -6,4 +6,5 @@ npm*debug*.log
 site/bundle.js
 .vscode
 .react-playground
-site
+site/build
+site/node_modules
