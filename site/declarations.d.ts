@@ -23,9 +23,6 @@ declare module "react-markings" {
 
 declare module "react-icons-kit" {
     import * as React from 'react'
-
-    const Icon: React.ComponentClass<any>
-    
 }
 
 declare module "react-icons-kit/icomoon" {
