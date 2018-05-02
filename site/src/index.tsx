@@ -5,7 +5,7 @@ import 'prismjs/themes/prism-tomorrow.css'
 import 'prismjs/components/prism-javascript'
 import 'prismjs/components/prism-markup'
 import 'prismjs/components/prism-jsx'
-import registerServiceWorker from './registerServiceWorker';
+import { unregister } from './registerServiceWorker';
 import { injectGlobal } from 'styled-components'
 
 injectGlobal`
@@ -37,4 +37,4 @@ ReactDOM.render(
   App,
   document.getElementById('root') as HTMLElement
 );
-registerServiceWorker();
+unregister();
