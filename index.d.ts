@@ -38,3 +38,5 @@ declare module "react-icons-kit/typicons" {
 }
 declare module "react-icons-kit/noto_emoji_regular" {
 }
+declare module "react-icons-kit/feather" {
+}

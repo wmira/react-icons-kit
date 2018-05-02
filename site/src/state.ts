@@ -10,7 +10,8 @@ export enum IconSetEnum {
     ionicons = 'ionicons',
     oct = 'oct',
     typicons = 'typicons',
-    noto_emoji_regular = 'noto_emoji_regular'
+    noto_emoji_regular = 'noto_emoji_regular',
+    feather = 'feather'
 }
 
 export const ICON_SETS: IIconSetMap = {
@@ -25,7 +26,8 @@ export const ICON_SETS: IIconSetMap = {
     [IconSetEnum.ionicons]: { module: 'ionicons', title: 'Ionics' },
     [IconSetEnum.oct]: { module: 'oct', title: 'Octicons' },
     [IconSetEnum.typicons]: { module: 'typicons', title: 'Typicons' },
-    [IconSetEnum.noto_emoji_regular]: { module: 'noto_emoji_regular', title: 'Noto Emoji Regular' }
+    [IconSetEnum.noto_emoji_regular]: { module: 'noto_emoji_regular', title: 'Noto Emoji Regular' },
+    [IconSetEnum.feather]: { module: 'feather', title: 'Feathericons' }
 }
 
 export interface IIconSet {
