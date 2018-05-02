@@ -73,8 +73,8 @@ const generateExportCode = exp => {
     return `export const ${exp.name} = { viewBox: "${exp.viewBox}", paths: [${generatePathsArr(exp.paths)}] }`;
 };
 
-const createExportLine = (exportName, viewBox, children ) => {
-    const exportedObject = JSON.stringify({ viewBox, children });
+const createExportLine = (exportName, viewBox, children, attribs ) => {
+    const exportedObject = JSON.stringify({ viewBox, children, attribs });
     return `export const ${exportName} = ${exportedObject};`;
 };
 
@@ -121,7 +121,15 @@ const readFromSvgContent = (content) => {
         walkChildren($, $el, children);
     });
 
-    return { children, viewBox: $svg[0].attribs['viewBox'] };
+    //fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+    const filteredAttribs = ['fill', 'stroke', 'stroke-width', 'stroke-linecap', 'stroke-linejoin']
+    const attribs = filteredAttribs.reduce( (partial, key) => {
+        if ( $svg[0].attribs && $svg[0].attribs[key] ) {
+            return Object.assign({}, partial, { [key]: $svg[0].attribs[key] })
+        } 
+        return partial
+    }, {})
+    return { children, viewBox: $svg[0].attribs['viewBox'], attribs };
 };
 
 
@@ -140,8 +148,9 @@ const generateFromSvgFiles = (svgFolder, outFolder, options = {} ) => {
     const parsedFiles = files.map( f => {
         const content = fs.readFileSync(path.join(svgFolder,f), { encoding: 'UTF-8' });
 
-        const { viewBox, children } = readFromSvgContent(content, f);
-        return { name: exportableName(extractName(f)), children, viewBox, f };
+        const { viewBox, children, attribs } = readFromSvgContent(content, f);
+        
+        return { name: exportableName(extractName(f)), children, viewBox, f, attribs };
     });
     //write it
     const exportLines = parsedFiles.map( parsed => {
@@ -149,10 +158,9 @@ const generateFromSvgFiles = (svgFolder, outFolder, options = {} ) => {
         const { name } = parsed;
         if ( !exportedNames[name] ) {
             const safeExportName = TRANSLATE_MAP[name] ? TRANSLATE_MAP[name] : name;
-            const { viewBox, children } = parsed;
-
-            const exportLine = createExportLine(safeExportName, viewBox, children); //`export const ${safeExportName} = ${exportedObject};`;
-
+            const { viewBox, children, attribs } = parsed;
+            
+            const exportLine = createExportLine(safeExportName, viewBox, children, attribs); //`export const ${safeExportName} = ${exportedObject};`;            
             fs.writeFileSync(path.join(outFolder, `${safeExportName}.js`), exportLine);
 
             exportedNames[name] = name;

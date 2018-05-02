@@ -28,9 +28,10 @@ const walkChildren = (children) => {
 export const SvgIcon = (props) => {
 
     const { size } = props;
-    const { children, viewBox } = props.icon;
+    const { children, viewBox, attribs: svgAttribs = {} } = props.icon;
     return (
-        <svg fill='currentColor' style={{ display: 'inline-block', verticalAlign: 'middle'}} height={size} width={size} viewBox={viewBox}>
+        <svg fill='currentColor' style={{ display: 'inline-block', verticalAlign: 'middle'}} height={size} width={size} viewBox={viewBox}
+            {...svgAttribs }>
             { props.title && <title>{props.title}</title> }
             { walkChildren(children) }
         </svg>
@@ -38,12 +39,12 @@ export const SvgIcon = (props) => {
 };
 
 SvgIcon.defaultProps = {
-    size: '16'
+    size: 16
 };
 
 SvgIcon.propTypes = {
     icon: PropTypes.object.isRequired,
-    size: PropTypes.number,
+    size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     title: PropTypes.string
 };
 
