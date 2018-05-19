@@ -1,10 +1,15 @@
 
 
 import * as React from 'react'
+import styled from 'styled-components'
 import { MouseEvent } from 'react'
 import { IconSetContainer, IconView, IconTitle, IconCodeContainer, SelectedIconView } from './Containers'
 import { ICON_SETS } from './state'
 import { Icon } from 'react-icons-kit'
+import * as copy from 'copy-to-clipboard'
+
+// @ts-ignore
+import { ic_content_copy as copyIcon } from 'react-icons-kit/md/ic_content_copy'
 
 interface IconContainerProps {
     iconData: any
@@ -13,16 +18,31 @@ interface IconContainerProps {
     onClick: ((event: MouseEvent<HTMLDivElement>) => void) | undefined
 }
 
+const CodeContainer = styled.div`
+    font-size: 0.8em;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+`
+
+const CopyContainer = styled.div`
+    padding-left: 6px;
+    padding-top: 4px;
+    cursor: pointer;
+`
+
+
 const IconContainer = (props: IconContainerProps) => {
     const IconViewContainer = props.iconName === props.selectedIcon ? SelectedIconView : IconView 
-    // console.log('IS IT THE SAME ? ', `ICON NAME: ${props.iconName}`, `S: ${props.selectedIcon}`, props.iconName === props.selectedIcon)
+    
     return (
         <IconViewContainer onClick={props.onClick} data-icon={props.iconName}>        
-            <div ><Icon size={32} icon={props.iconData} /></div>
+            <div><Icon size={32} icon={props.iconData} /></div>
             <div style={{paddingTop: 4, fontSize: 10}}>{props.iconName}</div>
         </IconViewContainer>
     )
 }
+
 
 export class IconSet extends React.Component<IIconSetProp> {
 
@@ -36,7 +56,7 @@ export class IconSet extends React.Component<IIconSetProp> {
     public showIconSetData = (): React.ReactElement<string> => {
         const { iconSetData } = this.props
         return (            
-            <IconSetContainer>
+            <IconSetContainer onClick={this.onIconSelected} >
                 { Object.keys(iconSetData).map( icon => {
                     return (
                         <IconContainer 
@@ -52,21 +72,45 @@ export class IconSet extends React.Component<IIconSetProp> {
     }
 
     public onIconSelected = (e: MouseEvent<HTMLDivElement>) => {
-        const target = e.target as HTMLDivElement
-        const iconName = target.getAttribute('data-icon')        
+        const target = e.target as HTMLElement
+        let targetWithData = target
+        let iconName = null
+        
+        while ( targetWithData ) {
+            iconName = targetWithData.getAttribute('data-icon')
+            if ( iconName ) {
+                break
+            }
+            const parentEl = targetWithData.parentElement
+            if ( parentEl ) {
+                targetWithData = parentEl
+            } else {
+                break
+            }
+        }
+            
         if ( iconName ) {
             this.props.onIconSelected(iconName, this.props.iconSet)
         }
     }
     
+    public copyToClipboard = () => {
+        const { iconSet, selectedIcon = '' } = this.props
+        copy(`import {${selectedIcon}} from 'react-icons-kit/${iconSet}/${selectedIcon}'`)
+    }
 
     public render() {
         const { iconSetData = null, iconSet, selectedIcon = '' } = this.props        
         return (            
             <div>                
                 <IconCodeContainer>
-                    <IconTitle>{ ICON_SETS[iconSet].title } </IconTitle>
-                    <code>{`import {${selectedIcon}} from 'react-icons-kit/${iconSet}/${selectedIcon}'`}</code>
+                    
+                    <div><IconTitle>{ ICON_SETS[iconSet].title } </IconTitle></div>
+                    <CodeContainer>                        
+                        <code>{`import {${selectedIcon}} from 'react-icons-kit/${iconSet}/${selectedIcon}'`}</code>
+                        <CopyContainer><Icon onClick={this.copyToClipboard} icon={copyIcon} size={16}/></CopyContainer>
+                    </CodeContainer>
+                    
                 </IconCodeContainer>
                 <div style={{marginTop: 100 }}>   
                 { !iconSetData || Object.keys(iconSetData).length === 0 ? this.showLoading() : this.showIconSetData() }

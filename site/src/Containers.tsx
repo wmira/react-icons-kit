@@ -11,7 +11,8 @@ export const IconSetContainer = styled.div`
     display: flex;
     flex-wrap: wrap; 
     justify-content: center;
-    align-items: center;   
+    align-items: center;
+    color: #585E5F;  
 `
 
 
@@ -52,7 +53,7 @@ export const StaticCode = styled.div`
 
 export const IconCodeContainer = styled.div`
     background: #FFF;
-    width: 100%;
+    width: calc(100% - 308px);
     position: fixed; 
     top: 62px;
     height: 80px;

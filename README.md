@@ -25,6 +25,7 @@ Please visit [react-icons-kit](http://wmira.github.io/react-icons-kit/)
 * [`Linea`](http://linea.io/) latest
 * [`Typicons`](http://typicons.com/) v2.0.8
 * [`Noto Emoji Regular`](https://www.google.com/get/noto/#emoji-zsye/) latest
+* [`Feather Icons`](https://feathericons.com/)latest
 
 Plus more to come.
 
