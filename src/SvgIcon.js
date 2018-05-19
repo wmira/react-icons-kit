@@ -29,9 +29,14 @@ export const SvgIcon = (props) => {
 
     const { size } = props;
     const { children, viewBox, attribs: svgAttribs = {} } = props.icon;
+    
+    const camelCasedAttribs = Object.keys(svgAttribs).reduce( (partial, key) => {
+        partial[camelcase(key)] = svgAttribs[key]
+        return partial
+    }, {})
     return (
         <svg fill='currentColor' style={{ display: 'inline-block', verticalAlign: 'middle'}} height={size} width={size} viewBox={viewBox}
-            {...svgAttribs }>
+            {...camelCasedAttribs }>
             { props.title && <title>{props.title}</title> }
             { walkChildren(children) }
         </svg>
