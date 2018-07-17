@@ -37,7 +37,7 @@ export const SvgIcon = (props) => {
     return (
         <svg fill='currentColor' style={{ display: 'inline-block', verticalAlign: 'middle'}} height={size} width={size} viewBox={viewBox}
             {...camelCasedAttribs }>
-            { props.title && <title>{props.title}</title> }
+            { props.title ? <title>{props.title}</title> : null }
             { walkChildren(children) }
         </svg>
     );

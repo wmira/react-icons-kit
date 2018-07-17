@@ -8,7 +8,7 @@ export const Icon = (props) => {
     const { style, className, icon, ...others} = props; //eslint-disable-line
 
     return (
-        <div {...others} style={{display: 'inline-flex', justifyContent: 'center', alignItems:'center', ...style}} className={className}>
+        <div {...others} style={{...style, display: 'flex', justifyContent: 'center', alignItems:'center'}} className={className}>
             <SvgIcon size={props.size} icon={props.icon} title={props.title} />
         </div>
     );

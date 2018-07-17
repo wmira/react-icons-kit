@@ -31,9 +31,9 @@ export const HomeIcon3 = () => <SideIconContainer icon={home3}/>
 `
 
 export const basicUsage = `
-
 <Center>
-    <InlineItems>
+<div style={{verticalAlign: 'bottom'}}>
+    <InlineItems container={Center}>
         <Icon icon={home} />
         <Icon size={32} icon={home} />
         <Icon size={64} icon={home} />
@@ -41,13 +41,13 @@ export const basicUsage = `
             <Icon size={'100%'} icon={home}/>
         </div>
     </InlineItems>
+</div>
 </Center>
-
 `
 export const changingColors = `
 
 <Center>
-    <InlineItems>
+    <InlineItems container={Center}>
         <div style={{ color: '#F4A261' }}>
             <Icon size={64} icon={home}/>
         </div>
