@@ -3,7 +3,7 @@
   "version": "1.1.8",
   "description": "React Icons Kit using various Svg Icon set",
   "main": "index.js",
-  "types": "declaration.d.ts",
+  "types": "index.d.ts",
   "keywords": [
     "react",
     "react icons",
