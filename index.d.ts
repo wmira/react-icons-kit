@@ -9,7 +9,7 @@ declare module "react-icons-kit" {
         style?: React.StyleHTMLAttributes<any>
         className?: string
     }
-    const withBaseIcon: (props: IconProps) => React.SFC<any>
+    const withBaseIcon: (props: IconProp) => React.SFC<any>
     export class Icon extends React.Component<IconProp> {}
 }
 
