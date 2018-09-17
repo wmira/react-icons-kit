@@ -1,6 +1,6 @@
 {
   "name": "react-icons-kit",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "description": "React Icons Kit using various Svg Icon set",
   "main": "index.js",
   "types": "index.d.ts",
