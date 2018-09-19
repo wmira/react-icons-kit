@@ -8,6 +8,7 @@ declare module "react-icons-kit" {
         size?: number | string
         style?: React.StyleHTMLAttributes<any>
         className?: string
+        onClick?: React.MouseEventHandler<HTMLDivElement>
     }
     const withBaseIcon: (props: IconProp) => React.SFC<any>
     export class Icon extends React.Component<IconProp> {}
