@@ -10,8 +10,8 @@ declare module "react-icons-kit" {
         className?: string
         onClick?: React.MouseEventHandler<HTMLDivElement>
     }
-    const withBaseIcon: (props: IconProp) => React.SFC<any>
     export class Icon extends React.Component<IconProp> {}
+    const withBaseIcon: (props: Pick<IconProp, Exclude<keyof IconProp, 'icon'>>) => React.SFC<IconProp>
 }
 
 declare module "react-icons-kit/icomoon"
