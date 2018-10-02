@@ -6,7 +6,7 @@ declare module "react-icons-kit" {
     export interface IconProp {
         icon: any
         size?: number | string
-        style?: React.StyleHTMLAttributes<any>
+        style?: React.CSSProperties
         className?: string
         onClick?: React.MouseEventHandler<HTMLDivElement>
     }
