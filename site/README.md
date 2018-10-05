@@ -1,2 +1,0 @@
-# react-icons-kit site
-
