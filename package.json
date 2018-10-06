@@ -19,9 +19,7 @@
   "license": "MIT",
   "scripts": {
     "predist": "rimraf dist/",
-    "dist": "babel src --out-dir dist && cp package.json README.md index.d.ts dist",
-    "devsite": "webpack-dev-server src/site/index.js",
-    "buildsite": "cross-env NODE_ENV='production' webpack src/site/index.js site/bundle.js ",
+    "dist": "babel src --out-dir dist && cp package.json README.md index.d.ts dist",    
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -58,7 +56,7 @@
     "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
-    "prop-types": "^15.5.8",
-    "camel-case": "^3.0.0"
+    "camel-case": "^3.0.0",
+    "prop-types": "^15.5.8"
   }
 }
