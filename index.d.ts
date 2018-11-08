@@ -12,9 +12,11 @@ declare module "react-icons-kit" {
     }
     export class Icon extends React.Component<IconProp> {}
     const withBaseIcon: (props: Pick<IconProp, Exclude<keyof IconProp, 'icon'>>) => React.SFC<IconProp>
+    export default Icon
 }
 
 declare module "react-icons-kit/icomoon"
+
 declare module "react-icons-kit/md"
 
 declare module "react-icons-kit/fa"
