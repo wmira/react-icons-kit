@@ -2,10 +2,11 @@
 
 declare module "react-icons-kit" {
     import * as React from 'react'
-    
+
     export interface IconProp {
         icon: any
         size?: number | string
+        tag?: string
         style?: React.CSSProperties
         className?: string
         onClick?: React.MouseEventHandler<HTMLDivElement>
@@ -40,7 +41,7 @@ declare module "react-icons-kit/typicons"
 declare module "react-icons-kit/noto_emoji_regular"
 
 declare module "react-icons-kit/feather"
-    
+
 
 declare module "react-icons-kit/icomoon/*"
 
@@ -67,4 +68,3 @@ declare module "react-icons-kit/typicons/*"
 declare module "react-icons-kit/noto_emoji_regular/*"
 
 declare module "react-icons-kit/feather/*"
-    

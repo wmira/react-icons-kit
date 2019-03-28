@@ -8,3 +8,4 @@ site/bundle.js
 .react-playground
 site/build
 site/node_modules
+.idea
