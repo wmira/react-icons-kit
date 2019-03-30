@@ -11,7 +11,7 @@ declare module "react-icons-kit" {
         className?: string
         onClick?: React.MouseEventHandler<HTMLDivElement>
     }
-    export class Icon extends React.Component<IconProp> {}
+    export const Icon: React.ComponentType<IconProp>
     const withBaseIcon: (props: Pick<IconProp, Exclude<keyof IconProp, 'icon'>>) => React.SFC<IconProp>
     export default Icon
 }
