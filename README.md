@@ -31,7 +31,7 @@ Plus more to come.
 
 ## Browse Icon Sets
 
-Browse all available icons here: [react-icons-kit](http://wmira.github.io/react-icons-kit/index.html)
+Browse all available icons here: [react-icons-kit](https://react-icons-kit.wmira.now.sh/)
 
 ## Changes
 
