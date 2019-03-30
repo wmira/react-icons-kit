@@ -33,6 +33,12 @@ Plus more to come.
 
 Browse all available icons here: [react-icons-kit](http://wmira.github.io/react-icons-kit/index.html)
 
+## Changes
+
+1.3.0
+
+  * `[Merged PR #42 by @nbcnc`](https://github.com/wmira/react-icons-kit/pull/42)
+
 ## Quick Start Guide
 
 ```javascript
