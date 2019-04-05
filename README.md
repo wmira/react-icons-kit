@@ -9,7 +9,7 @@ npm install --save react-icons-kit
 
 ## Documentation / Demo
 
-Please visit [react-icons-kit](https://react-icons-kit.wmira.now.sh/)
+Please visit [react-icons-kit](https://react-icons-kit.now.sh/)
 
 ## Bundled Icon Sets
 
@@ -31,7 +31,7 @@ Plus more to come.
 
 ## Browse Icon Sets
 
-Browse all available icons here: [react-icons-kit](https://react-icons-kit.wmira.now.sh/)
+Browse all available icons here: [react-icons-kit](https://react-icons-kit.now.sh/)
 
 ## Changes
 
