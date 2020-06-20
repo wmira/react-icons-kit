@@ -58,6 +58,10 @@ Browse all available icons here: [react-icons-kit](https://react-icons-kit.now.s
     }
 ```
 
+## Tree Shaking
+
+Use the eslint config from this: https://github.com/wmira/react-icons-kit/issues/38
+
 ## Development
 
 ### React Icons Kit Site
