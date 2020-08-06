@@ -5,7 +5,7 @@ Note: Please visit https://reactsvgicons.com/
 has svg icons directly as react components can you can import to your project without
 to need to use a library
 
-[![Generic badge](https://img.shields.io/badge/<SUBJECT>-<STATUS>-<COLOR>.svg)](https://shields.io/)
+[![Project Supported By BeginnerJavaScript.com](https://img.shields.io/badge/%F0%9F%91%8D_Project_Sponsored_By-BeginnerJavaScript.com%20Tutorials-brightgreen.svg?style=flat-square)](https://BeginnerJavaScript.com/friend/REACTICONS)
 
 ## Installation
 
