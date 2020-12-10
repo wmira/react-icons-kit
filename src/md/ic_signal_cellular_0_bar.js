@@ -1,1 +1,1 @@
-export const ic_signal_cellular_0_bar = {"viewBox":"0 0 24 24","children":[{"name":"path","attribs":{"fill-opacity":".3","d":"M2 22h20V2z"}}]};
+export const ic_signal_cellular_0_bar = {"viewBox":"0 0 24 24","children":[{"name":"rect","attribs":{"fill":"none","height":"24","width":"24"},"children":[]},{"name":"path","attribs":{"d":"M20,6.83V20H6.83L20,6.83 M22,2L2,22h20V2L22,2z"},"children":[]}]};

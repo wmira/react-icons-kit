@@ -1,1 +1,1 @@
-export const ic_network_cell = {"viewBox":"0 0 24 24","children":[{"name":"path","attribs":{"fill-opacity":".3","d":"M2 22h20V2z"}},{"name":"path","attribs":{"d":"M17 7L2 22h15z"}}]};
+export const ic_network_cell = {"viewBox":"0 0 24 24","children":[{"name":"rect","attribs":{"fill":"none","height":"24","width":"24"},"children":[]},{"name":"path","attribs":{"d":"M2,22h20V2L2,22z M20,20h-3V9.83l3-3V20z"},"children":[]}]};

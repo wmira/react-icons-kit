@@ -1,1 +1,1 @@
-export const ic_fiber_manual_record = {"viewBox":"0 0 24 24","children":[{"name":"circle","attribs":{"fill":"#010101","cx":"12","cy":"12","r":"8"}}]};
+export const ic_fiber_manual_record = {"viewBox":"0 0 24 24","children":[{"name":"path","attribs":{"d":"M24 24H0V0h24v24z","fill":"none"},"children":[]},{"name":"circle","attribs":{"cx":"12","cy":"12","r":"8"},"children":[]}]};
