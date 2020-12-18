@@ -126,7 +126,7 @@ const readFromSvgContent = (content) => {
     const attribs = filteredAttribs.reduce( (partial, key) => {
         if ( $svg[0].attribs && $svg[0].attribs[key] ) {
             return Object.assign({}, partial, { [key]: $svg[0].attribs[key] })
-        } 
+        }
         return partial
     }, {})
     return { children, viewBox: $svg[0].attribs['viewBox'], attribs };
@@ -149,7 +149,7 @@ const generateFromSvgFiles = (svgFolder, outFolder, options = {} ) => {
         const content = fs.readFileSync(path.join(svgFolder,f), { encoding: 'UTF-8' });
 
         const { viewBox, children, attribs } = readFromSvgContent(content, f);
-        
+
         return { name: exportableName(extractName(f)), children, viewBox, f, attribs };
     });
     //write it
@@ -159,8 +159,8 @@ const generateFromSvgFiles = (svgFolder, outFolder, options = {} ) => {
         if ( !exportedNames[name] ) {
             const safeExportName = TRANSLATE_MAP[name] ? TRANSLATE_MAP[name] : name;
             const { viewBox, children, attribs } = parsed;
-            
-            const exportLine = createExportLine(safeExportName, viewBox, children, attribs); //`export const ${safeExportName} = ${exportedObject};`;            
+
+            const exportLine = createExportLine(safeExportName, viewBox, children, attribs); //`export const ${safeExportName} = ${exportedObject};`;
             fs.writeFileSync(path.join(outFolder, `${safeExportName}.js`), exportLine);
 
             exportedNames[name] = name;
@@ -177,10 +177,18 @@ const generateFromSvgFiles = (svgFolder, outFolder, options = {} ) => {
 
 const findAllSvgFiles = (filterName, filterDir, dir, filelist = []) => {
     fs.readdirSync(dir).forEach(file => {
-        filelist = fs.statSync(path.join(dir, file)).isDirectory()
-        ? findAllSvgFiles(filterName, filterDir, path.join(dir, file), filelist)
-        : filelist.filter(filterName).concat(path.join(dir, file));
+        const isDir = fs.statSync(path.join(dir, file)).isDirectory();
 
+        if (isDir) {
+            filelist = findAllSvgFiles(filterName, filterDir, path.join(dir, file), filelist);
+            return;
+        }
+
+        const pathToAdd = path.join(dir, file);
+
+        if (!filterName(pathToAdd)) return;
+
+        filelist = filelist.concat(pathToAdd);
     });
     return filelist;
 

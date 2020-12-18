@@ -1,0 +1,1 @@
+export const ic_signal_cellular_null_outline = {"viewBox":"0 0 24 24","children":[{"name":"path","attribs":{"d":"M0 0h24v24H0V0z","fill":"none"},"children":[]},{"name":"path","attribs":{"d":"M20 6.83V20H6.83L20 6.83M22 2L2 22h20V2z"},"children":[]}]};
