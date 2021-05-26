@@ -1,0 +1,1 @@
+export const ic_bookmark_remove_outline = {"viewBox":"0 0 24 24","children":[{"name":"rect","attribs":{"fill":"none","height":"24","width":"24"},"children":[]},{"name":"path","attribs":{"d":"M17,11v6.97l-5-2.14l-5,2.14V5h6V3H7C5.9,3,5,3.9,5,5v16l7-3l7,3V11H17z M21,7h-6V5h6V7z"},"children":[]}]};

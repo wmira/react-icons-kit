@@ -1,1 +1,1 @@
-export const ic_view_column_outline = {"viewBox":"0 0 24 24","children":[{"name":"path","attribs":{"d":"M0 0h24v24H0V0z","fill":"none"},"children":[]},{"name":"path","attribs":{"d":"M4 5v13h17V5H4zm10 2v9h-3V7h3zM6 7h3v9H6V7zm13 9h-3V7h3v9z"},"children":[]}]};
+export const ic_view_column_outline = {"viewBox":"0 0 24 24","children":[{"name":"rect","attribs":{"fill":"none","height":"24","width":"24"},"children":[]},{"name":"path","attribs":{"d":"M3,5v14h18V5H3z M8.33,17H5V7h3.33V17z M13.67,17h-3.33V7h3.33V17z M19,17h-3.33V7H19V17z"},"children":[]}]};
