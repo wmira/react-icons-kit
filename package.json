@@ -22,7 +22,8 @@
     "dist": "babel src --out-dir dist && cp package.json README.md index.d.ts dist",
     "test": "jest",
     "test:watch": "jest --watch",
-    "update:octicons": "npm update @primer/octicons && cd scripts && ./extract-octicons.js"
+    "update:octicons": "npm update @primer/octicons && cd scripts && ./extract-octicons.js",
+    "update:md": "node scripts/extract-md.js"
   },
   "repository": {
     "type": "git",
