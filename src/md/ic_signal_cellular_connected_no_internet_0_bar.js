@@ -1,1 +1,1 @@
-export const ic_signal_cellular_connected_no_internet_0_bar = {"viewBox":"0 0 24 24","children":[{"name":"path","attribs":{"fill-opacity":".3","d":"M22 8V2L2 22h16V8z"}},{"name":"path","attribs":{"d":"M20 22h2v-2h-2v2zm0-12v8h2v-8h-2z"}}]};
+export const ic_signal_cellular_connected_no_internet_0_bar = {"viewBox":"0 0 24 24","children":[{"name":"rect","attribs":{"fill":"none","height":"24","width":"24"},"children":[]},{"name":"path","attribs":{"d":"M20,18h2v-8h-2V18z M20,22h2v-2h-2V22z M18,20v2H2L22,2v6h-2V6.83L6.83,20H18z"},"children":[]}]};

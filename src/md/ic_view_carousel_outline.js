@@ -1,1 +1,1 @@
-export const ic_view_carousel_outline = {"viewBox":"0 0 24 24","children":[{"name":"path","attribs":{"d":"M0 0h24v24H0V0z","fill":"none"},"children":[]},{"name":"path","attribs":{"d":"M2 6h4v11H2zm5 13h10V4H7v15zM9 6h6v11H9V6zm9 0h4v11h-4z"},"children":[]}]};
+export const ic_view_carousel_outline = {"viewBox":"0 0 24 24","children":[{"name":"rect","attribs":{"fill":"none","height":"24","width":"24"},"children":[]},{"name":"path","attribs":{"d":"M2,7h4v10H2V7z M7,19h10V5H7V19z M9,7h6v10H9V7z M18,7h4v10h-4V7z"},"children":[]}]};
