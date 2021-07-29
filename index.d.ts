@@ -3,7 +3,7 @@
 declare module "react-icons-kit" {
     import * as React from 'react'
 
-    export interface IconProp {
+    export interface IconProp extends React.HTMLAttributes<HTMLElement> {
         icon: any
         size?: number | string
         tag?: string
