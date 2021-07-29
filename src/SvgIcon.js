@@ -35,8 +35,9 @@ const walkChildren = (children) => {
         let merge = {};
         if ( attribsMap.fill === 'none' && attribsMap.stroke ) {
             merge = { fill: 'none', stroke: 'currentColor' };
-        }        
-        
+        } else if ( attribsMap.fill === 'none' ) {
+            merge = { fill: 'none' };
+        }
         return createElement(name, { key: idx, ...attribs, ...merge }, gchildren === null ? gchildren : walkChildren(gchildren));
     });
 };
@@ -46,7 +47,7 @@ export const SvgIcon = (props) => {
 
     const { size } = props;
     const { children, viewBox, attribs: svgAttribs = {} } = props.icon;
-    
+
     const camelCasedAttribs = Object.keys(svgAttribs).reduce( (partial, key) => {
         partial[camelcase(key)] = svgAttribs[key]
         return partial
