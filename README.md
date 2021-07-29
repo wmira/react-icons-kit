@@ -54,7 +54,10 @@ Plus more to come.
 
 ## Browse Icon Sets
 
-Browse all available icons here: [react-icons-kit](https://react-icons-kit.now.sh/)
+Browse all available icons here: 
+
+[Vercel react-icons-kit](https://react-icons-kit-wmira.vercel.app/)
+[Surge react-icons-kit](https://react-icons-kit.surge.sh/)
 
 
 ## Quick Start Guide
