@@ -85,17 +85,14 @@ Use the eslint config from this: https://github.com/wmira/react-icons-kit/issues
 
 ### React Icons Kit Site
 
-To update the react-icons-kit site deployed at [react-icons-kit](http://wmira.github.io/react-icons-kit/index.html), you need to first
-do the following. Assuming you are at the root folder:
+To update the react-icons-kit site deployed at [react-icons-kit](http://wmira.github.io/react-icons-kit/index.html), You would need to clone
+https://github.com/wmira/react-icons-kit-site
 
-1. npm install
-2. npm run dist
-3. cd site
-4. npm install
-5. cd node_modules
-6. ln -sf ../../dist react-icons-kit
-7. cd ..
-8. npm start
+1. Run npm run dist on react-icons-kit
+2. Go to react-icons-kit-site and do npm install
+3. cd node_modules
+4. ln -sf /path/to/react-icons-kit/dist react-icons-kit
+5. npm start
 
 You should now be able to live edit the website to do some changes, submit pull request.
 
