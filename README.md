@@ -5,6 +5,17 @@ Note: Please visit https://reactsvgicons.com/
 has svg icons directly as react components can you can import to your project without
 to need to use a library
 
+Releases:
+
+v2.0.0
+
+- [@kamikazebr](https://github.com/kamikazebr) export withBaseIcon - PR [#75](https://github.com/wmira/react-icons-kit/pull/75)
+- [@lyleunderwood](https://github.com/lyleunderwood) Don't discard fill=none - PR [#73](https://github.com/wmira/react-icons-kit/pull/73)
+- [@lyleunderwood](https://github.com/lyleunderwood) Update Material Design Icons to 4.0.0 - PR [#60](https://github.com/wmira/react-icons-kit/pull/60)
+- [@vahissan](https://github.com/vahissan) Allow IconProp type definition to allow all HTML attributes.  PR[#58](https://github.com/wmira/react-icons-kit/pull/58)
+- [@gottschalkironhack](https://github.com/gottschalkironhack) - Same material v4 update
+
+
 [![Project Supported By ReactForBeginners.com](https://img.shields.io/badge/%F0%9F%91%8D_Project_Supported_By-ReactForBeginners.com%20Tutorials-brightgreen.svg?style=flat-square)](https://ReactForBeginners.com/friend/REACTICONS)
 
 [![Project Supported By AdvancedReact.com](https://img.shields.io/badge/%F0%9F%91%8D_Project_Supported_By-AdvancedReact.com%20Tutorials-brightgreen.svg?style=flat-square)](https://AdvancedReact.com/friend/REACTICONS)
@@ -23,7 +34,7 @@ Please visit [react-icons-kit](https://react-icons-kit.now.sh/)
 
 * [`IcoMoon`](https://github.com/Keyamoon/IcoMoon-Free) vmaster
 * [`FontAwesome`](http://fortawesome.github.io/Font-Awesome/icons/) v4.7
-* [`MaterialIcons`](https://www.google.com/design/icons/) v3.0.1
+* [`MaterialIcons`](https://www.google.com/design/icons/) v4.x
 * [`Open Iconic`](https://github.com/iconic/open-iconic) v1.1.1
 * [`Entypo`](http://entypo.com) latest
 * [`Ikons`](http://ikons.piotrkwiatkowski.co.uk/) latest
