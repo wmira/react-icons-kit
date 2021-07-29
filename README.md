@@ -32,7 +32,9 @@ npm install --save react-icons-kit
 
 ## Documentation / Demo
 
-Please visit [react-icons-kit](https://react-icons-kit-wmira.vercel.app/)
+Please visit:
+[Vercel react-icons-kit](https://react-icons-kit.vercel.app/)
+[Surge react-icons-kit](https://react-icons-kit.surge.sh/)
 
 ## Bundled Icon Sets
 
