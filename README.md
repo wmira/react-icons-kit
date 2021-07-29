@@ -15,6 +15,10 @@ v2.0.0
 - [@vahissan](https://github.com/vahissan) Allow IconProp type definition to allow all HTML attributes.  PR[#58](https://github.com/wmira/react-icons-kit/pull/58)
 - [@gottschalkironhack](https://github.com/gottschalkironhack) - Same material v4 update
 
+1.3.0
+
+- `[Merged PR #42 by @nbcnc`](https://github.com/wmira/react-icons-kit/pull/42)
+
 
 [![Project Supported By ReactForBeginners.com](https://img.shields.io/badge/%F0%9F%91%8D_Project_Supported_By-ReactForBeginners.com%20Tutorials-brightgreen.svg?style=flat-square)](https://ReactForBeginners.com/friend/REACTICONS)
 
@@ -28,7 +32,7 @@ npm install --save react-icons-kit
 
 ## Documentation / Demo
 
-Please visit [react-icons-kit](https://react-icons-kit.now.sh/)
+Please visit [react-icons-kit](https://react-icons-kit-wmira.vercel.app/)
 
 ## Bundled Icon Sets
 
@@ -52,11 +56,6 @@ Plus more to come.
 
 Browse all available icons here: [react-icons-kit](https://react-icons-kit.now.sh/)
 
-## Changes
-
-1.3.0
-
-  * `[Merged PR #42 by @nbcnc`](https://github.com/wmira/react-icons-kit/pull/42)
 
 ## Quick Start Guide
 
@@ -85,7 +84,7 @@ Use the eslint config from this: https://github.com/wmira/react-icons-kit/issues
 
 ### React Icons Kit Site
 
-To update the react-icons-kit site deployed at [react-icons-kit](http://wmira.github.io/react-icons-kit/index.html), You would need to clone
+To update the react-icons-kit site deployed at [react-icons-kit](https://react-icons-kit-wmira.vercel.app/), You would need to clone
 https://github.com/wmira/react-icons-kit-site
 
 1. Run npm run dist on react-icons-kit
