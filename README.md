@@ -100,3 +100,10 @@ https://github.com/wmira/react-icons-kit-site
 
 You should now be able to live edit the website to do some changes, submit pull request.
 
+## Contributors
+
+react-icons-kit is brought to you by the following contributors:
+
+<a href="https://github.com/wmira/react-icons-kit/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=wmira/react-icons-kit" />
+</a>
