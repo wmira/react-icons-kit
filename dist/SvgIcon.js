@@ -53,7 +53,7 @@ function expandStyle() {
         val = _next$split2[1];
 
     if (notNullOrUndef(key) && notNullOrUndef(val)) {
-      partial[(0, _camelCase.camelcase)(key)] = val;
+      partial[(0, _camelCase.camelCase)(key)] = val;
     }
 
     return partial;
@@ -73,7 +73,7 @@ var walkChildren = function walkChildren(children) {
       if (key === 'style') {
         partial.style = expandStyle(attribsMap[key]);
       } else {
-        partial[(0, _camelCase.camelcase)(key)] = attribsMap[key];
+        partial[(0, _camelCase.camelCase)(key)] = attribsMap[key];
       }
 
       return partial;
@@ -106,7 +106,7 @@ var SvgIcon = function SvgIcon(props) {
       _props$icon$attribs = _props$icon.attribs,
       svgAttribs = _props$icon$attribs === void 0 ? {} : _props$icon$attribs;
   var camelCasedAttribs = Object.keys(svgAttribs).reduce(function (partial, key) {
-    partial[(0, _camelCase.camelcase)(key)] = svgAttribs[key];
+    partial[(0, _camelCase.camelCase)(key)] = svgAttribs[key];
     return partial;
   }, {});
   return /*#__PURE__*/_react["default"].createElement("svg", _extends({
