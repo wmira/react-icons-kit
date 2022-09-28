@@ -54,7 +54,7 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
-    "camel-case": "^3.0.0",
+    "camel-case": "^4.1.2",
     "prop-types": "^15.5.8"
   }
 }
