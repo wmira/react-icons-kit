@@ -1,5 +1,4 @@
 node_modules
-dist
 scripts/icomoon
 scripts/*.zip
 npm*debug*.log
@@ -9,3 +8,4 @@ site/bundle.js
 site/build
 site/node_modules
 .idea
+.history

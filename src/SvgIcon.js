@@ -1,7 +1,7 @@
 
 import React, { createElement } from 'react';
 import PropTypes from 'prop-types';
-import camelcase from 'camel-case';
+import { camelCase as camelcase } from 'camel-case';
 
 function notNullOrUndef(val) {
   return (val !== null && val !== undefined)
